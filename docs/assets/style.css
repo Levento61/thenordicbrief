@@ -167,3 +167,63 @@ main{padding-top:28px;padding-bottom:56px}
   .logo-mark{background:#1a1f27;outline:1px solid #2a2f36}
   .chart .a{opacity:.25}
 }
+/* Mobil: kompaktare, mer som datorversionen */
+@media (max-width:600px){
+  body{font-size:15px;line-height:1.5}
+  .wrap{padding:0 14px}
+  .topbar{font-size:11.5px;padding-top:6px;padding-bottom:6px}
+  .brand{padding-top:14px;padding-bottom:4px}
+  .logo{gap:10px}
+  .logo-mark{width:28px;height:28px;border-radius:6px}
+  .logo-mark::before,.logo-mark::after{left:7px;right:7px;height:2px}
+  .logo-mark::before{top:8px;box-shadow:0 5px 0 var(--fotboll)}
+  .logo-mark::after{top:18px}
+  .logo-text{font-size:28px}
+  .tagline{font-size:12.5px;margin-top:6px}
+  .sections{gap:18px;font-size:12.5px;padding-top:10px;padding-bottom:10px}
+  .principle{font-size:11.5px}.principle p{padding:5px 0}
+  main{padding-top:16px;padding-bottom:36px}
+  .kicker{font-size:10.5px;margin-bottom:4px}
+  .card-lead{padding-bottom:16px;margin-bottom:16px}
+  .card-lead h3{font-size:25px;line-height:1.15}
+  .card-lead .summary{font-size:15px}
+  .card-normal h3{font-size:17.5px;margin-bottom:4px}
+  .card .summary{font-size:14px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .top-grid{gap:16px}
+  .top-grid .card{padding-left:10px}
+  /* Marknadsläget direkt efter nyhetskorten */
+  .front{display:flex;flex-direction:column;gap:0}
+  .lead-area,.side{display:contents}
+  .card-lead{order:1}.top-grid{order:2}.markets{order:3;margin-top:22px}.lead-area .columns{order:4}.latest{order:5}
+  .markets{padding:14px 14px 10px}
+  .markets h2{font-size:19px}
+  .m-group h4{margin:10px 0 2px;font-size:10px}
+  .m-group li{font-size:13px;padding:3px 0;grid-template-columns:1fr auto 66px}
+  .m-src{font-size:10.5px}
+  .columns{gap:18px;margin-top:22px;padding-top:16px}
+  .col h2,.lead-area .col h2{font-size:20px;margin-bottom:4px}
+  .col li{padding:7px 0}
+  .col li a{font-size:14.5px}
+  .col li time{font-size:11px}
+  .more{font-size:13px;margin-top:8px}
+  .latest h2{font-size:19px}
+  .latest li{font-size:13px;padding:6px 0}
+  .latest li:nth-child(n+9){display:none}
+  .post h1{font-size:28px}
+  .post .dek{font-size:16.5px;margin-bottom:16px;padding-bottom:16px}
+  .post .body{font-size:16px;line-height:1.65}
+  .post .body h2{font-size:21px;margin:24px 0 6px}
+  .sec-head h1{font-size:30px}
+  .card-normal{min-width:0}
+  .footer{font-size:13px;padding:24px 0}
+}
+/* Mobil: nyhetskorten två och två, bara rubrik */
+@media (max-width:600px){
+  .top-grid{grid-template-columns:1fr 1fr;gap:16px 14px}
+  .top-grid .card{padding-left:8px;border-left-width:3px}
+  .top-grid .card-normal h3{font-size:15px;line-height:1.25;margin:0;hyphens:auto;-webkit-hyphens:auto}
+  .top-grid .summary{display:none}
+  .top-grid .kicker{font-size:0;margin-bottom:3px}
+  .top-grid .kicker a{font-size:10px}
+  .card-lead .summary{-webkit-line-clamp:2}
+}
