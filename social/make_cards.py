@@ -154,23 +154,23 @@ def markets_card(m, page, total):
     d = ImageDraw.Draw(im)
     d.text((80, 100), "MARKNADSLÄGET", font=font("Inter-Bold", 32), fill="#ff9ec2")
     d.text((80, 150), m.get("as_of", ""), font=font("Inter-Regular", 30), fill="#9aa2ad")
-    y = 230
-    fn, fv = font("Inter-SemiBold", 40), font("Inter-Regular", 40)
+    y = 220
+    fn, fv = font("Inter-SemiBold", 34), font("Inter-Regular", 34)
     for g in m.get("groups", []):
-        d.text((80, y), g["title"].upper(), font=font("Inter-Bold", 24), fill="#ff9ec2")
-        y += 44
+        d.text((80, y), g["title"].upper(), font=font("Inter-Bold", 22), fill="#ff9ec2")
+        y += 38
         for it in g.get("items", []):
-            if y > H - 260:
+            if y > H - 250:
                 break
             d.text((80, y), it["name"], font=fn, fill="#ffffff")
-            val = str(it["value"])
+            val = str(it["value"]).replace("\u00a0", " ")
             ch = it.get("change_pct")
             chs = f"{ch:+.2f} %".replace(".", ",") if isinstance(ch, (int, float)) else ""
             cc = "#6fd39b" if isinstance(ch, (int, float)) and ch > 0 else "#ff8a80" if isinstance(ch, (int, float)) and ch < 0 else "#9aa2ad"
             d.text((W - 80 - 230 - d.textlength(val, font=fv), y), val, font=fv, fill="#ffffff")
             d.text((W - 80 - d.textlength(chs, font=fn), y), chs, font=fn, fill=cc)
-            y += 62
-        y += 18
+            y += 50
+        y += 10
     d.text((80, H - 190), f"Källa: {m.get('source', '')}. Ej investeringsråd.", font=font("Inter-Regular", 24), fill="#9aa2ad")
     d.line([(80, H - 140), (W - 80, H - 140)], fill="#2a2f37", width=2)
     logo(d, 80, H - 105, 0.85, color="#ffffff")

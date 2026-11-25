@@ -234,48 +234,29 @@ def chart_svg(c):
 </figure>"""
 
 
-LIVE_KEYS = {"Bitcoin": "btc", "Ethereum": "eth", "EUR/SEK": "eursek", "USD/SEK": "usdsek"}
-# Rader som visas live via TradingViews officiella widget i stället för som vanlig rad.
-TV_LIVE = [("FTSE 100", "FOREXCOM:UKXGBP"), ("Brent", "TVC:UKOIL")]
-
-
-def tradingview_widget():
-    quotes = ""
-    for name, sym in TV_LIVE:
-        cfg = {"symbol": sym, "width": "100%", "isTransparent": True, "colorTheme": "dark", "locale": "sv_SE"}
-        quotes += f"""<div class="tradingview-widget-container" aria-label="{e(name)}"><div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>{json.dumps(cfg)}</script></div>"""
-    return f"""<div class="m-group m-tv"><h4>Live: FTSE 100 och Brent</h4>
-  {quotes}
-  <p class="m-tv-src">FTSE 100 visas som CFD (FOREX.com), Brent som TradingViews Brent-notering (UKOIL). Data via <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">TradingView</a>, kan vara fördröjd.</p>
-</div>"""
-
-
 def markets_box(m):
+    """Marknadsläget. Datan skrivs av scripts/fetch_markets.py (GitHub Actions var 15:e minut);
+    assets/markets-live.js hämtar /data/markets.json i läsarens webbläsare och uppdaterar rutan."""
     if not m:
         return ""
     groups = []
     for g in m.get("groups", []):
         rows = []
         for it in g.get("items", []):
-            if it["name"] in dict(TV_LIVE):
-                continue
             ch = it.get("change_pct")
             cls, chs = "", ""
             if isinstance(ch, (int, float)):
-                cls = "up" if ch > 0 else "down" if ch < 0 else ""
-                chs = f"{ch:+.2f} %".replace(".", ",")
-            live = LIVE_KEYS.get(it["name"])
-            attr = f' data-live="{live}"' if live else ""
-            rows.append(f'<li{attr}><span class="m-name">{e(it["name"])}</span>'
+                cls = "up" if ch > 0 else "down" if ch < 0 else "flat"
+                chs = f"{ch:+.2f} %".replace(".", ",").replace("-", "−")
+            key = it.get("key", "")
+            rows.append(f'<li data-key="{e(key)}"><span class="m-name">{e(it["name"])}</span>'
                         f'<span class="m-val">{e(str(it["value"]))}</span>'
                         f'<span class="m-ch {cls}">{chs}</span></li>')
         groups.append(f'<div class="m-group"><h4>{e(g["title"])}</h4><ul>{"".join(rows)}</ul></div>')
     return f"""<section class="markets" aria-label="Marknadsläget">
   <div class="markets-head"><h2>Marknadsläget</h2><p class="asof">{e(m.get('as_of', ''))}</p></div>
-  <div class="m-groups">{"".join(groups)}{tradingview_widget()}</div>
-  <p class="m-src">Källa: {e(m.get('source', ''))}. Fördröjda uppgifter, inte investeringsråd.</p>
-  <p class="m-src m-live" hidden></p>
+  <div class="m-groups">{"".join(groups)}</div>
+  <p class="m-src">Källa: <span class="m-srcs">{e(m.get('source', ''))}</span>. Uppdateras var 15:e minut, kan vara fördröjd. Inte investeringsråd.</p>
 </section>
 <script src="/assets/markets-live.js" defer></script>"""
 
@@ -374,7 +355,7 @@ def build_about():
   </ol>
   <p>Vi namnger inte misstänkta eller brottsoffer som inte är offentliga personer, vi skriver politiskt neutralt och vi ger aldrig investeringsråd. Transferrykten publiceras bara från etablerade källor och märks tydligt som rykten.</p>
   <h2 id="marknadslaget">Marknadsläget</h2>
-  <p>Kurserna i Marknadsläget hämtas i första hand från primärkällor – börser, indexägare och centralbanker – och i andra hand från etablerade nyhetsbyråer. Krypto, valuta, FTSE 100 och Brent uppdateras automatiskt under dagen från CoinGecko, ECB och TradingView; övriga värden uppdateras med varje upplaga. Kursuppgifter kan vara fördröjda och är inte investeringsråd.</p>
+  <p>Marknadsläget uppdateras automatiskt var 15:e minut. Kurserna hämtas från TradingView, med Yahoo Finance, CoinGecko och ECB som reserv; styrräntan kommer direkt från Riksbanken. Svarar ingen källa visas det senast kända värdet. Förändringen avser senaste handelsdag (för krypto senaste 24 timmarna). Kursuppgifter kan vara fördröjda och är inte investeringsråd.</p>
   <h2 id="rattelser">Rättelser</h2>
   <p>Fel som upptäcks rättas i artikeln, med en notering om vad som ändrats och när. Alla rättelser samlas på sidan <a href="/rattelser/">Rättelser</a>. Hittar du ett fel? Hör av dig så rättar vi.</p>
   <h2 id="utan-bilder">Varför inga bilder?</h2>
@@ -518,6 +499,9 @@ def main():
     for p in posts:  # saknas bilden (t.ex. utan Pillow) används standardbilden
         if not (OUT / p["og"].lstrip("/")).exists():
             p["og"] = "/og/default.jpg"
+    if (CONTENT / "markets.json").exists():
+        (OUT / "data").mkdir(parents=True, exist_ok=True)
+        shutil.copy(CONTENT / "markets.json", OUT / "data" / "markets.json")
     write(OUT / "index.html", build_index(posts, markets))
     for k in SECTIONS:
         write(OUT / k / "index.html", build_section(k, posts))

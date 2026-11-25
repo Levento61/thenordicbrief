@@ -1,0 +1,53 @@
+name: Marknadsläget
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/fetch_markets.py"
+      - ".github/workflows/markets.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: markets
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Hämta kurser (TradingView → Yahoo Finance → CoinGecko/ECB → senast kända)
+        id: fetch
+        run: python3 scripts/fetch_markets.py | tee fetch.log
+        continue-on-error: true
+      - name: Spara och publicera
+        run: |
+          git config user.name "Marknadsläget"
+          git config user.email "markets@users.noreply.github.com"
+          git add content/markets.json docs/data/markets.json
+          git diff --cached --quiet && { echo "Inga ändringar"; exit 0; }
+          git commit -qm "Marknadsläget $(TZ=Europe/Stockholm date '+%Y-%m-%d %H.%M')"
+          for i in 1 2 3 4 5; do
+            git pull -q --rebase -X theirs origin main && git push -q origin HEAD:main && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
+      - name: Spara körlogg i grenen markets-log
+        if: always()
+        run: |
+          mkdir -p /tmp/log && cp fetch.log /tmp/log/ 2>/dev/null || echo "ingen logg" > /tmp/log/fetch.log
+          cd /tmp/log && git init -q -b markets-log && git add -A
+          git -c user.name=markets -c user.email=markets@users.noreply.github.com commit -qm "Logg $(date -u +%FT%TZ)"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" markets-log
+      - name: Larma om någon rad saknar värde
+        if: steps.fetch.outcome == 'failure'
+        run: exit 1

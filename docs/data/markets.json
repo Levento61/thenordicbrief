@@ -1,0 +1,81 @@
+{
+ "as_of": "25 nov 16.13",
+ "source": "Placera/Direkt (OMXS30, 25 nov 17.30), Reuters via RTÉ (Brent, 25 nov 16.13), Reuters via Korea Times (guld, decemberterminen, 25 nov 17.13), CoinDesk (Bitcoin, 25 nov 20.24), Riksbanken (styrränta)",
+ "groups": [
+  {
+   "title": "Index",
+   "items": [
+    {
+     "name": "OMXS30",
+     "value": "3 188,11",
+     "change_pct": -0.81
+    },
+    {
+     "name": "S&P 500",
+     "value": "—",
+     "change_pct": null
+    },
+    {
+     "name": "FTSE 100",
+     "value": "—",
+     "change_pct": null
+    },
+    {
+     "name": "Nikkei",
+     "value": "—",
+     "change_pct": null
+    }
+   ]
+  },
+  {
+   "title": "Krypto",
+   "items": [
+    {
+     "name": "Bitcoin",
+     "value": "ca 60 000 USD",
+     "change_pct": 0.2
+    },
+    {
+     "name": "Ethereum",
+     "value": "—",
+     "change_pct": null
+    }
+   ]
+  },
+  {
+   "title": "Valuta",
+   "items": [
+    {
+     "name": "EUR/SEK",
+     "value": "—",
+     "change_pct": null
+    },
+    {
+     "name": "USD/SEK",
+     "value": "—",
+     "change_pct": null
+    }
+   ]
+  },
+  {
+   "title": "Räntor & råvaror",
+   "items": [
+    {
+     "name": "Styrränta (Riksbanken)",
+     "value": "2,00 %",
+     "change_pct": null
+    },
+    {
+     "name": "Guld",
+     "value": "3 445,10 USD",
+     "change_pct": -3.3
+    },
+    {
+     "name": "Brent",
+     "value": "93,06 USD",
+     "change_pct": 1.82
+    }
+   ]
+  }
+ ]
+}

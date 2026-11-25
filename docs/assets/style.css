@@ -83,7 +83,8 @@ main{padding-top:28px;padding-bottom:56px}
 .m-group li{display:grid;grid-template-columns:1fr auto 74px;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:14px;font-variant-numeric:tabular-nums}
 .m-val{text-align:right}
 .m-ch{text-align:right;font-weight:600}
-.m-ch.up{color:#6fd39b} .m-ch.down{color:#ff8a80}
+.m-ch.up{color:#6fd39b} .m-ch.down{color:#ff8a80} .m-ch.flat{color:#aab6c6}
+.m-val,.m-ch{white-space:nowrap}
 .m-src{margin:12px 0 0;font-size:11px;color:#aab6c6}
 
 /* Columns per section */
@@ -136,8 +137,6 @@ main{padding-top:28px;padding-bottom:56px}
   .sections{gap:20px;font-size:14px}
   .lang-label{display:none}
 }
-.m-tv .tradingview-widget-container{min-height:68px;margin:2px -4px 0}
-.m-tv-src{margin:4px 0 0;font-size:11px;color:#aab6c6}.m-tv-src a{color:inherit}
 
 /* Senaste-flödet */
 .latest{margin-top:24px;border-top:3px solid var(--ink);padding-top:10px}
