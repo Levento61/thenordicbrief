@@ -1,0 +1,22 @@
+name: IndexNow
+on:
+  push:
+    branches: [main]
+    paths: ["docs/**"]
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Vänta på att GitHub Pages publicerat
+        run: sleep 90
+      - name: Skicka nya och ändrade sidor till IndexNow (Bing, Yandex m.fl.)
+        run: |
+          KEY=b45ed8bfb27dc192c2b783bad859f0b9
+          URLS=$(git diff --name-only HEAD~1 HEAD -- docs | grep 'index.html$' | sed -e 's#^docs/#https://nordicbrief.se/#' -e 's#index.html$##' | head -500)
+          [ -z "$URLS" ] && { echo "Inga ändrade sidor"; exit 0; }
+          JSON=$(printf '%s\n' $URLS | python3 -c 'import sys,json; print(json.dumps({"host":"nordicbrief.se","key":"'$KEY'","keyLocation":"https://nordicbrief.se/'$KEY'.txt","urlList":[l.strip() for l in sys.stdin if l.strip()]}))')
+          echo "$JSON"
+          curl -sS -o /dev/null -w "IndexNow svar: %{http_code}\n" -X POST https://api.indexnow.org/indexnow -H "Content-Type: application/json; charset=utf-8" -d "$JSON"
