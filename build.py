@@ -515,6 +515,9 @@ def main():
         (OUT / "og").mkdir(parents=True, exist_ok=True)
         for f in og_cache.glob("*.jpg"):
             shutil.copy(f, OUT / "og" / f.name)
+    for p in posts:  # saknas bilden (t.ex. utan Pillow) används standardbilden
+        if not (OUT / p["og"].lstrip("/")).exists():
+            p["og"] = "/og/default.jpg"
     write(OUT / "index.html", build_index(posts, markets))
     for k in SECTIONS:
         write(OUT / k / "index.html", build_section(k, posts))
