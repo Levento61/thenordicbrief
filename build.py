@@ -75,6 +75,7 @@ def load_posts(demo: bool):
                 "sources": meta.get("sources", []) or [],
                 "featured": bool(meta.get("featured")),
                 "chart": meta.get("chart"),
+                "updated": meta.get("updated"),
                 "slug": slug,
                 "url": f"/{meta['section']}/{date:%Y/%m/%d}/{slug}/",
                 "html": markdown.markdown(body, extensions=["extra", "sane_lists"]),
@@ -88,6 +89,17 @@ def load_markets(demo=False):
         if f.exists():
             return json.loads(f.read_text(encoding="utf-8"))
     return None
+
+
+EDITION = {}
+
+
+def edition_line():
+    if not EDITION.get("updated"):
+        return sv_date(dt.date.today()).capitalize()
+    u = dt.datetime.fromisoformat(str(EDITION["updated"]))
+    label = EDITION.get("label", "")
+    return f"{sv_date(u.date()).capitalize()} · {e(label)}{' · ' if label else ''}uppdaterad {u:%H.%M}"
 
 
 def layout(title, body, description=TAGLINE, path="/", og_type="website", extra_head=""):
@@ -122,7 +134,7 @@ def layout(title, body, description=TAGLINE, path="/", og_type="website", extra_
 <body>
 <header class="masthead">
   <div class="topbar wrap">
-    <span class="today">{sv_date(dt.date.today()).capitalize()}</span>
+    <span class="today">{edition_line()}</span>
     <div class="lang"><span class="lang-label">Language</span><div class="gtranslate_wrapper"></div></div>
   </div>
   <div class="brand wrap">
@@ -292,7 +304,7 @@ def build_post(p, posts):
     }
     extra = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
     body = f"""<article class="post sec-{p['section']}">
-  <p class="kicker"><a href="/{p['section']}/">{sec}</a> · <time datetime="{p['date'].isoformat()}">{sv_date(p['date'].date())}</time></p>
+  <p class="kicker"><a href="/{p['section']}/">{sec}</a> · <time datetime="{p['date'].isoformat()}">{sv_date(p['date'].date())} {p['date']:%H.%M}</time>{(' · Uppdaterad ' + dt.datetime.fromisoformat(str(p['updated'])).strftime('%H.%M')) if p.get('updated') else ''}</p>
   <h1>{e(p['title'])}</h1>
   <p class="dek">{e(p['summary'])}</p>
   {chart_svg(p['chart']) if p.get('chart') else ''}
@@ -344,6 +356,9 @@ def main():
     demo = "--demo" in sys.argv
     posts = load_posts(demo)
     markets = load_markets(demo)
+    ef = CONTENT / "edition.json"
+    if ef.exists():
+        EDITION.update(json.loads(ef.read_text(encoding="utf-8")))
     if OUT.exists():
         shutil.rmtree(OUT)
     shutil.copytree(ROOT / "assets", OUT / "assets")

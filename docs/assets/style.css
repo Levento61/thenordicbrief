@@ -15,7 +15,7 @@ a:hover{text-decoration:underline;text-underline-offset:3px}
 /* Masthead */
 .masthead{border-bottom:3px double var(--ink);background:var(--paper)}
 .topbar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);padding-top:10px;padding-bottom:10px;border-bottom:1px solid var(--rule)}
-.today{text-transform:capitalize}
+.today{}
 .lang{display:flex;align-items:center;gap:8px}
 .lang-label{font-size:12px;letter-spacing:.06em;text-transform:uppercase}
 .gtranslate_wrapper a{margin-left:6px;font-weight:600;color:var(--sverige)}

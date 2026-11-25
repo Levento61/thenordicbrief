@@ -4,7 +4,7 @@ Den här filen läses av agentlaget vid varje daglig körning. Den är sajtens "
 
 ## Uppdrag
 
-The Nordic Brief publicerar varje morgon korta, egna sammanfattningar av det viktigaste inom:
+The Nordic Brief publicerar tre gånger om dagen (07.00, 17.00 och 21.00) korta, egna sammanfattningar av det viktigaste inom:
 
 1. **Sverige** – rikstäckande svenska nyheter (politik, samhälle, väder/kris, brott på samhällsnivå, kultur av nationellt intresse).
 2. **Fotboll** – all europeisk fotboll: de stora ligorna (Premier League, La Liga, Serie A, Bundesliga, Ligue 1), Allsvenskan, Champions League/Europa League/Conference League, landslag och transfers.
@@ -12,34 +12,63 @@ The Nordic Brief publicerar varje morgon korta, egna sammanfattningar av det vik
 
 Språk: **svenska**. Ton: saklig, tydlig, självsäker, aldrig sensationell.
 
-## Daglig volym
+## Publiceringsschema – tre upplagor per dag
 
-- 3–5 artiklar per sektion, totalt 9–15.
-- Exakt en artikel markeras `featured: true` (dagens viktigaste nyhet).
-- Uppdatera `content/markets.json` (Marknadsläget) varje körning.
+| Upplaga | Datainsamling till | Publicering | Innehåll |
+|---|---|---|---|
+| **Morgon** | 06.59 | **07.00** | Fullständig upplaga: 3–5 artiklar per sektion (9–15 totalt). Dagens toppnyhet (`featured: true`). Marknadsläget uppdateras. |
+| **Eftermiddag** | 16.59 | **17.00** | Dagens utveckling: 2–4 nya artiklar per sektion, uppdatering av morgonens nyheter vid ny utveckling, ny toppnyhet om något större hänt. Marknadsläget efter Stockholmsbörsens stängning. |
+| **Kväll** | 20.59 | **21.00** | Kvällens läge: 1–3 nya artiklar per sektion (kvällsmatcher, USA-börsen, sena besked). Marknadsläget med USA-börsen och krypto. |
 
-## Roller (en körning = ett lag)
+Tider avser svensk tid (Europe/Stockholm). Körningen startar i förväg; koordinatorn gör en sista kontroll av nyhetsläget strax före publicering och pushar **tidigast** på publiceringsminuten (vänta med `sleep` om laget är klart tidigare).
 
-**Koordinator** (huvudsessionen)
-- Läser denna fil och `logs/published.txt`.
-- Bestämmer dagens bevakning och fördelar till agenterna.
-- Sätter ihop resultatet, kör `python3 build.py`, committar och pushar.
-- Skriver en rad per publicerad artikel i `logs/published.txt` och en sammanfattning i `logs/runs/ÅÅÅÅ-MM-DD.md`.
+Varje upplaga: exakt en artikel i hela sajten har `featured: true` – ta bort flaggan från tidigare toppnyhet när en ny väljs. Uppdatera `content/edition.json`:
 
-**Researcher** (en per sektion)
-- Söker dagens nyheter (senaste ~24 h) från etablerade källor.
-- Levererar per nyhet: vad som hänt, nyckelfakta (namn, siffror, datum) och 2–3 käll-URL:er.
-- Kontrollerar mot `logs/published.txt` att nyheten inte redan publicerats (om inte en verklig ny utveckling finns).
+```
+{"label": "Morgonupplaga", "updated": "2026-11-26T07:00:00"}
+```
+(label: Morgonupplaga / Eftermiddagsupplaga / Kvällsupplaga)
 
-**Skribent**
-- Skriver varje artikel från researcherns material, i egna ord.
-- Format: rubrik (max ~90 tecken), ingress 1–2 meningar, brödtext 150–300 ord, gärna en mellanrubrik "Därför spelar det roll" eller liknande med sammanhang.
+En nyhet som utvecklas uppdateras i sin befintliga fil (ny text + `updated:`-fält i frontmatter, t.ex. `updated: 2026-11-26T17:00:00`) i stället för att en dubblett skapas.
 
-**Controller** (separat agent som inte sett skrivprocessen)
+## Laget – hierarki
+
+```
+Koordinator (chefredaktör)
+├── Sverige-agent
+├── Fotboll-agent
+├── Ekonomi-agent
+└── Controller (fristående granskare)
+```
+
+**Koordinator** (huvudsessionen – den schemalagda körningen)
+- Läser denna fil, `logs/published.txt` och senaste filen i `logs/runs/`.
+- Ger varje kategoriagent ett uppdrag: vilken upplaga, hur många artiklar, vad som redan publicerats, eventuella nyheter att följa upp.
+- Startar de tre kategoriagenterna **parallellt** som separata agenter.
+- Skickar alla inlämnade artiklar till Controllern (en separat agent som inte sett skrivprocessen).
+- Väljer toppnyhet, sparar filerna, kör `python3 build.py`, gör en sista kontroll, väntar till publiceringsminuten, committar och pushar.
+- Skriver en rad per publicerad artikel i `logs/published.txt` (`ÅÅÅÅ-MM-DD HH:MM | sektion | rubrik | käll-URL`) och en rapport i `logs/runs/ÅÅÅÅ-MM-DD-HHMM.md` (vad som publicerades, vad controllern strök och varför).
+
+**Sverige-agent** – rikstäckande svenska nyheter
+- Researchar och skriver sektionens artiklar från start till färdig text.
+- Källor i första hand: TT, SVT, SR Ekot, DN, SvD, Aftonbladet, Expressen, GP, Sydsvenskan, myndigheter (Polisen, SMHI, Krisinformation, Regeringen).
+
+**Fotboll-agent** – all europeisk fotboll
+- Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Allsvenskan, Champions League/Europa League/Conference League, landslag och transfers.
+- Kvällsupplagan prioriterar kvällens matcher och resultat.
+- Källor: BBC Sport, UEFA, ligornas och klubbarnas officiella sidor, Reuters, AP, Fotbollskanalen, Sportbladet, Expressen Sport. Transferrykten bara från etablerade källor och tydligt märkta som rykten.
+
+**Ekonomi-agent** – global ekonomi, börs, krypto och valuta
+- Skriver sektionens artiklar, uppdaterar `content/markets.json` och tar fram diagram när det tillför något.
+- Källor: Dagens industri, Reuters, Bloomberg, Financial Times, CNBC, Riksbanken, ECB, Fed, SCB, Nasdaq, CoinDesk.
+
+Varje kategoriagent levererar färdiga artikelfiler (se Filformat) plus en lista över källorna den använt.
+
+**Controller** (en gemensam för alla sektioner)
 - Kontrollerar varje artikel mot källorna: namn, siffror, datum, citat, resultat.
 - Kontrollerar att inget är kopierat (ingen mening följer källan ordagrant; max ett kort citat <15 ord, markerat).
-- Kontrollerar att Marknadsläget har tidsstämpel och källa.
-- Stryker eller skickar tillbaka allt som inte håller. Hellre en artikel mindre än ett fel.
+- Kontrollerar att Marknadsläget och diagram har tidsstämpel, källa och rimliga värden.
+- Godkänner, rättar eller stryker. Hellre en artikel mindre än ett fel.
 - Lämnar en kort rapport: godkänt / ändrat / struket, med skäl.
 
 ## Diagram och bilder
