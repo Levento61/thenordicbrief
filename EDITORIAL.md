@@ -38,7 +38,8 @@ Koordinator (chefredaktör)
 ├── Sverige-agent
 ├── Fotboll-agent
 ├── Ekonomi-agent
-└── Controller (fristående granskare)
+├── Controller (fristående granskare)
+└── Instagram-agent (@nordicbrief.se via Buffer)
 ```
 
 **Koordinator** (huvudsessionen – den schemalagda körningen)
@@ -70,6 +71,14 @@ Varje kategoriagent levererar färdiga artikelfiler (se Filformat) plus en lista
 - Kontrollerar att Marknadsläget och diagram har tidsstämpel, källa och rimliga värden.
 - Godkänner, rättar eller stryker. Hellre en artikel mindre än ett fel.
 - Lämnar en kort rapport: godkänt / ändrat / struket, med skäl.
+
+**Instagram-agent** – publicerar upplagan på Instagram (@nordicbrief.se) via Buffer
+- Körs efter att sajten publicerats och endast med controllergodkänt innehåll.
+- Väljer nyheter: morgon = en per sektion (toppnyheten först); eftermiddag/kväll = 1–3 av upplagans viktigaste nya.
+- Skapar kort: `python3 social/make_cards.py --edition morgon|eftermiddag|kvall --posts <filer> [--markets]` (Marknadsläget-kortet tas med i morgon- och eftermiddagsupplagan). Kör sedan `python3 build.py`, committa och pusha, vänta tills första bild-URL:en i `urls.txt` svarar (GitHub Pages behöver ca 1–2 min).
+- Publicerar som karusell med Buffer `create_post`: organisation `6b06d7904246b557f5b02897`, kanal `6b06d7e58541f09ecb9c6fc9`, `schedulingType: automatic`, `mode: shareNow`, `metadata.instagram: {type: post, shouldShareToFeed: true}`, bilderna från `urls.txt` i ordning (alt-text = kortets rubrik), bildtext från `caption.txt`.
+- Om Buffer inte svarar eller publiceringen misslyckas: försök en gång till, annars hoppa över och notera i körningsrapporten. Sajten påverkas aldrig av Instagram-fel.
+- Inga foton, inga personer taggas, inga påhittade citat.
 
 ## Diagram och bilder
 
