@@ -362,6 +362,8 @@ def main():
     if OUT.exists():
         shutil.rmtree(OUT)
     shutil.copytree(ROOT / "assets", OUT / "assets")
+    if (ROOT / "social" / "cards").exists():
+        shutil.copytree(ROOT / "social" / "cards", OUT / "social")
     if (ROOT / "static").exists():
         for f in (ROOT / "static").iterdir():
             shutil.copy(f, OUT / f.name)
