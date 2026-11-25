@@ -148,15 +148,15 @@ Grupper: Index (OMXS30, S&P 500, DAX, Nikkei), Krypto (Bitcoin, Ethereum), Valut
 
 | Rad | 1. Primärkälla | 2. Etablerad nyhetskälla | 3. Reserv (anges som "data via …") |
 |---|---|---|---|
-| OMXS30 | Nasdaq Stockholm (nasdaqomxnordic.com) | Nyhetsbyrån Direkt/Placera, Dagens industri, Reuters | Yahoo Finance |
-| S&P 500 | S&P Dow Jones Indices | Reuters, AP, CNBC, Bloomberg | Yahoo Finance |
-| DAX | Deutsche Börse (boerse-frankfurt.de) | Reuters, Bloomberg, Handelsblatt, Nyhetsbyrån Direkt/Placera | Yahoo Finance |
-| Nikkei | Nikkei Indexes (indexes.nikkei.co.jp) | Reuters, Bloomberg, AP, Nikkei Asia, Jiji Press, Kyodo | Yahoo Finance |
-| Bitcoin, Ethereum | CoinDesk (index) | Reuters, Bloomberg | CoinGecko, CoinMarketCap |
-| EUR/SEK, USD/SEK | Riksbanken eller ECB:s referenskurs | Reuters, Bloomberg | Yahoo Finance |
+| OMXS30 | Nasdaq Stockholm (nasdaqomxnordic.com) | Nyhetsbyrån Direkt/Placera, Dagens industri, Reuters | Yahoo Finance, Investing.com |
+| S&P 500 | S&P Dow Jones Indices | Reuters, AP, CNBC, Bloomberg | Yahoo Finance, Investing.com |
+| DAX | Deutsche Börse (boerse-frankfurt.de) | Reuters, Bloomberg, Handelsblatt, Nyhetsbyrån Direkt/Placera | Yahoo Finance, Investing.com |
+| Nikkei | Nikkei Indexes (indexes.nikkei.co.jp) | Reuters, Bloomberg, AP, Nikkei Asia, Jiji Press, Kyodo | Yahoo Finance, Investing.com |
+| Bitcoin, Ethereum | CoinDesk (index) | Reuters, Bloomberg | CoinGecko, CoinMarketCap, Investing.com |
+| EUR/SEK, USD/SEK | Riksbanken eller ECB:s referenskurs | Reuters, Bloomberg | Yahoo Finance, Investing.com |
 | Styrränta | Riksbanken (riksbank.se) | TT, Reuters | – |
-| Guld | LBMA eller CME/Comex | Reuters, Bloomberg | Yahoo Finance |
-| Brent | ICE | Reuters, Bloomberg, Nyhetsbyrån Direkt/Placera | Yahoo Finance |
+| Guld | LBMA eller CME/Comex | Reuters, Bloomberg | Yahoo Finance, Investing.com |
+| Brent | ICE | Reuters, Bloomberg, Nyhetsbyrån Direkt/Placera | Yahoo Finance, Investing.com |
 
 Andra sajter godtas inte för Marknadsläget, till exempel nyhetsbrev, Substack, innehållsfarmer, Upstox, Ad-hoc-news, Severint och Hurbra. Om ingen godtagbar källa finns: `"—"` och `null`. Fältet `source` listar de källor som faktiskt användes. Varje värde ska ha en tidpunkt, och `as_of` anger den äldsta. Controllern kontrollerar varje värde mot den angivna källan och att ingen bättre källa i tabellen gick att använda.
 
