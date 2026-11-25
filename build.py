@@ -218,6 +218,7 @@ def layout(title, body, description=TAGLINE, path="/", og_type="website", extra_
 window.gtranslateSettings = {{"default_language":"sv","languages":["sv","en"],"wrapper_selector":".gtranslate_wrapper","native_language_names":true}};
 </script>
 <script src="https://cdn.gtranslate.net/widgets/latest/ln.js" defer></script>
+<script data-goatcounter="https://nordicbrief.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>"""
 
@@ -401,6 +402,8 @@ def build_about():
   <p>Marknadsläget uppdateras automatiskt var 15:e minut. Kurserna hämtas från TradingView, med Yahoo Finance, CoinGecko och ECB som reserv; styrräntan kommer direkt från Riksbanken. Svarar ingen källa visas det senast kända värdet. Förändringen avser senaste handelsdag (för krypto senaste 24 timmarna). Kursuppgifter kan vara fördröjda och är inte investeringsråd.</p>
   <h2 id="rattelser">Rättelser</h2>
   <p>Fel som upptäcks rättas i artikeln, med en notering om vad som ändrats och när. Alla rättelser samlas på sidan <a href="/rattelser/">Rättelser</a>. Hittar du ett fel? Hör av dig så rättar vi.</p>
+  <h2 id="integritet">Integritet</h2>
+  <p>Vi använder inga cookies och ingen spårning. Antalet besök mäts anonymt med GoatCounter, utan cookies och utan att personuppgifter sparas – vi ser bara hur många som läser, vilka sidor som är populära och varifrån besökarna kommer.</p>
   <h2 id="utan-bilder">Varför inga bilder?</h2>
   <p>The Nordic Brief är medvetet minimalistisk. Vi använder inga foton – sidan laddar snabbt, fungerar även med svag uppkoppling och låter nyheten stå i centrum. Där en bild faktiskt tillför något, till exempel börs- och kursutveckling, visar vi diagram byggda på data.</p>
   </div>
