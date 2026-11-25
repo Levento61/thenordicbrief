@@ -21,7 +21,8 @@ CONTENT = ROOT / "content"
 OUT = ROOT / "docs"
 SITE_URL = "https://nordicbrief.se"
 SITE_NAME = "The Nordic Brief"
-TAGLINE = "Sverige, fotboll och marknader – varje dag."
+TAGLINE = "Sverige, fotboll och marknader – varje dag."  # sidtitel, metabeskrivning och flöde (sökord)
+SLOGAN = "Nyheter som de var förr – snabba, korta och utan brus."  # syns under logotypen
 
 SECTIONS = {
     "sverige": {"name": "Sverige", "desc": "Rikstäckande nyheter från hela Sverige."},
@@ -159,7 +160,7 @@ def layout(title, body, description=TAGLINE, path="/", og_type="website", extra_
       <span class="logo-mark" aria-hidden="true"></span>
       <span class="logo-text">The Nordic <b>Brief</b></span>
     </a>
-    <p class="tagline">{TAGLINE}</p>
+    <p class="tagline">{SLOGAN}</p>
   </div>
   <nav class="sections wrap" aria-label="Sektioner">{nav}</nav>
   <div class="principle"><div class="wrap"><p>Inga bilder, inget brus – bara nyheterna. <a href="/om/#utan-bilder">Därför kör vi minimalistiskt →</a></p></div></div>
@@ -500,7 +501,7 @@ def main():
                 key.write_text(sig, encoding="utf-8")
     default_og = og_cache / "default.jpg"
     if not default_og.exists():
-        og_image(default_og, TAGLINE)
+        og_image(default_og, SLOGAN)
     if og_cache.exists():
         (OUT / "og").mkdir(parents=True, exist_ok=True)
         for f in og_cache.glob("*.jpg"):
