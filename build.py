@@ -19,7 +19,7 @@ import yaml
 ROOT = Path(__file__).parent
 CONTENT = ROOT / "content"
 OUT = ROOT / "docs"
-SITE_URL = "https://nordicbrief.com"
+SITE_URL = "https://nordicbrief.se"
 SITE_NAME = "The Nordic Brief"
 TAGLINE = "Sverige, fotboll och marknader – varje dag."
 
@@ -356,7 +356,7 @@ def main():
     write(OUT / "feed.xml", build_feed(posts))
     write(OUT / "sitemap.xml", build_sitemap(posts))
     write(OUT / "robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
-    write(OUT / "CNAME", "nordicbrief.com\n")
+    write(OUT / "CNAME", "nordicbrief.se\n")
     write(OUT / ".nojekyll", "")
     write(OUT / "404.html", layout("Sidan hittades inte",
                                     '<section class="empty"><h1>Sidan hittades inte</h1><p><a href="/">Till startsidan →</a></p></section>',
