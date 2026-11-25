@@ -1,6 +1,6 @@
 # The Nordic Brief
 
-Daglig nyhetssajt: Sverige, europeisk fotboll och global ekonomi. https://thenordicbrief.com
+Daglig nyhetssajt: Sverige, europeisk fotboll och global ekonomi. https://nordicbrief.com
 
 - `content/posts/` – artiklar (Markdown med frontmatter)
 - `content/markets.json` – Marknadsläget
