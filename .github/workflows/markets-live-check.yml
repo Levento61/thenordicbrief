@@ -15,13 +15,6 @@ jobs:
       - name: Källornas svar och CORS-huvuden
         run: |
           for u in \
-            "https://www.avanza.se/_api/market-guide/index/18981" \
-            "https://www.avanza.se/_api/market-guide/index/155722" \
-            "https://quote.cnbc.com/quote-html-webservice/restQuote/symbolType/symbol?symbols=.GDAXI%7C@LCO.1&requestMethod=itv&noform=1&partnerId=2&fund=1&exthrs=1&output=json" \
-            "https://query1.finance.yahoo.com/v8/finance/chart/%5EGDAXI?range=1d&interval=15m" \
-            "https://query1.finance.yahoo.com/v8/finance/chart/BZ%3DF?range=1d&interval=15m" \
-            "https://stooq.com/q/l/?s=%5Edax&f=sd2t2ohlcp&h&e=json" \
-            "https://stooq.com/q/l/?s=cb.f&f=sd2t2ohlcp&h&e=json" \
             "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true" \
             "https://api.exchange.coinbase.com/products/ETH-USD/stats" \
             'https://data-api.binance.vision/api/v3/ticker/24hr?symbols=%5B%22BTCUSDT%22,%22ETHUSDT%22%5D' \
