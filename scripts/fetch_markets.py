@@ -30,7 +30,7 @@ ROWS = [
     ("omxs30", "OMXS30", "Index", 2, "", ["OMXSTO:OMXS30"], "^OMX", None),
     ("spx", "S&P 500", "Index", 2, "", ["SP:SPX"], "^GSPC", None),
     ("nasdaq", "Nasdaq", "Index", 2, "", ["NASDAQ:IXIC"], "^IXIC", None),
-    ("nyse", "NYSE", "Index", 2, "", ["NYSE:NYA"], "^NYA", None),
+    ("nyse", "NYSE", "Index", 2, "", ["NYSE:NYA"], "^NYA", None),  # Yahoo först: TradingViews NYA är fördröjd
     ("btc", "Bitcoin", "Krypto", 0, "USD", ["BITSTAMP:BTCUSD", "COINBASE:BTCUSD"], "BTC-USD", ("cg", "bitcoin")),
     ("eth", "Ethereum", "Krypto", 0, "USD", ["BITSTAMP:ETHUSD", "COINBASE:ETHUSD"], "ETH-USD", ("cg", "ethereum")),
     ("sol", "Solana", "Krypto", 2, "USD", ["COINBASE:SOLUSD", "BINANCE:SOLUSDT"], "SOL-USD", ("cg", "solana")),
@@ -42,6 +42,7 @@ ROWS = [
     ("brent", "Brent", "Räntor & råvaror", 2, "USD", ["TVC:UKOIL", "ICEEUR:BRN1!"], "BZ=F", None),
     ("natgas", "Naturgas", "Räntor & råvaror", 3, "USD", ["NYMEX:NG1!", "TVC:NATGAS"], "NG=F", None),
 ]
+YAHOO_FIRST = {"nyse"}
 GROUPS = ["Index", "Krypto", "Valuta", "Räntor & råvaror"]
 TV_MARKETS = ["global", "america", "sweden", "crypto", "forex", "futures", "cfd"]
 
@@ -200,6 +201,9 @@ def main():
         res, src = None, None
         if extra and extra[0] == "riksbank":  # primärkälla för styrräntan
             res, src = riksbank(extra[1]), "Riksbanken"
+        if key in YAHOO_FIRST and ysym and not test:
+            res = yahoo(ysym)
+            src = "Yahoo Finance" if res else None
         for t in tvs:
             if res:
                 break
