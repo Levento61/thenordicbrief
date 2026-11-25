@@ -190,8 +190,9 @@ def load_previous():
 
 
 def main():
+    test = "--test-backup" in sys.argv  # hoppar över TradingView och skriver inga filer
     prev = load_previous()
-    tv = tradingview([t for r in ROWS for t in r[5]])
+    tv = {} if test else tradingview([t for r in ROWS for t in r[5]])
     stamp = now_iso()
     items, used, fresh = {}, [], 0
     for key, name, group, dec, unit, tvs, ysym, extra in ROWS:
@@ -231,7 +232,7 @@ def main():
         "source": ", ".join(srcs),
         "groups": groups,
     }
-    for f in (CONTENT_FILE, DOCS_FILE):
+    for f in () if test else (CONTENT_FILE, DOCS_FILE):
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print("\n".join(log))
