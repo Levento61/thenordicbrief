@@ -16,10 +16,10 @@ Språk: **svenska**. Ton: saklig, tydlig, självsäker, aldrig sensationell.
 
 | Upplaga | Datainsamling till | Publicering | Innehåll |
 |---|---|---|---|
-| **Morgon** | 06.59 | **07.00** | Fullständig upplaga: så många artiklar som kan källbeläggas och granskas ordentligt – sikta på 6–10 per sektion. Dagens toppnyhet (`featured: true`). Marknadsläget uppdateras. |
-| **Lunch** | 11.59 | **12.00** | Förmiddagens utveckling: alla relevanta nya nyheter, sikta på 3–6 per sektion (nyheter sedan morgonen, uppföljningar, Stockholmsbörsens förmiddag, dagens fotbollsnyheter och presskonferenser). Marknadsläget uppdateras. |
-| **Eftermiddag** | 16.59 | **17.00** | Dagens utveckling: alla relevanta nya nyheter, sikta på 4–8 per sektion, uppdatering av morgonens nyheter vid ny utveckling, ny toppnyhet om något större hänt. Marknadsläget efter Stockholmsbörsens stängning. |
-| **Kväll** | 20.59 | **21.00** | Kvällens läge: alla relevanta nya nyheter, sikta på 3–6 per sektion (kvällsmatcher, USA-börsen, sena besked). Marknadsläget med USA-börsen och krypto. |
+| **Morgon** | 06.59 | **07.00** | Fullständig upplaga: så många artiklar som kan källbeläggas och granskas ordentligt – sikta på 6–10 per sektion. Dagens toppnyhet (`featured: true`). |
+| **Lunch** | 11.59 | **12.00** | Förmiddagens utveckling: alla relevanta nya nyheter, sikta på 3–6 per sektion (nyheter sedan morgonen, uppföljningar, Stockholmsbörsens förmiddag, dagens fotbollsnyheter och presskonferenser). |
+| **Eftermiddag** | 16.59 | **17.00** | Dagens utveckling: alla relevanta nya nyheter, sikta på 4–8 per sektion, uppdatering av morgonens nyheter vid ny utveckling, ny toppnyhet om något större hänt. |
+| **Kväll** | 20.59 | **21.00** | Kvällens läge: alla relevanta nya nyheter, sikta på 3–6 per sektion (kvällsmatcher, USA-börsen, sena besked). |
 
 **Volymprincip:** sajten ska ha så mycket nyheter som möjligt – läsarna vill ha ett konstant flöde. Men varje artikel måste vara verklig, källbelagd och godkänd av controllern; hellre färre än utfyllnad eller dubbletter. Mindre nyheter kan vara korta (80–150 ord).
 
@@ -63,7 +63,7 @@ Koordinator (chefredaktör)
 - Källor: BBC Sport, UEFA, ligornas och klubbarnas officiella sidor, Reuters, AP, Fotbollskanalen, Sportbladet, Expressen Sport. Transferrykten bara från etablerade källor och tydligt märkta som rykten.
 
 **Ekonomi-agent** – global ekonomi, börs, krypto och valuta
-- Skriver sektionens artiklar, uppdaterar `content/markets.json` och tar fram diagram när det tillför något.
+- Skriver sektionens artiklar och tar fram diagram när det tillför något.
 - Källor: Dagens industri, Reuters, Bloomberg, Financial Times, CNBC, Riksbanken, ECB, Fed, SCB, Nasdaq, CoinDesk.
 
 Varje kategoriagent levererar färdiga artikelfiler (se Filformat) plus en lista över källorna den använt.
@@ -71,7 +71,7 @@ Varje kategoriagent levererar färdiga artikelfiler (se Filformat) plus en lista
 **Controller** (en gemensam för alla sektioner)
 - Kontrollerar varje artikel mot källorna: namn, siffror, datum, citat, resultat.
 - Kontrollerar att inget är kopierat (ingen mening följer källan ordagrant; max ett kort citat <15 ord, markerat).
-- Kontrollerar att Marknadsläget och diagram har tidsstämpel, källa och rimliga värden.
+- Kontrollerar att diagram har tidsstämpel, källa och rimliga värden.
 - Godkänner, rättar eller stryker. Hellre en artikel mindre än ett fel.
 - Lämnar en kort rapport: godkänt / ändrat / struket, med skäl.
 
@@ -135,29 +135,9 @@ sources:
 Brödtext i Markdown.
 ```
 
-`content/markets.json`:
+**Marknadsläget sköts helt automatiskt – agenterna rör det inte.** GitHub Actions (`.github/workflows/markets.yml`) kör `scripts/fetch_markets.py` var 15:e minut och skriver `content/markets.json` och `docs/data/markets.json`; `assets/markets-live.js` uppdaterar rutan i läsarens webbläsare.
 
-```
-{"as_of": "26 nov 07:00", "source": "Källnamn",
- "groups": [{"title": "Index", "items": [{"name": "OMXS30", "value": "2 512,40", "change_pct": 0.84}]}]}
-```
-
-Grupper: Index (OMXS30, S&P 500, FTSE 100, Nikkei), Krypto (Bitcoin, Ethereum), Valuta (EUR/SEK, USD/SEK), Räntor & råvaror (styrränta, guld, Brent). Använd svensk talformatering. `change_pct` = förändring senaste handelsdag, eller `null` om okänd.
-
-**Källor för Marknadsläget – starkast möjliga, i denna ordning per rad.** Använd i första hand primärkällan (börsen, indexägaren, centralbanken). Gå bara vidare till nästa källa om den första inte går att nå eller inte har en aktuell notering:
-
-| Rad | 1. Primärkälla | 2. Etablerad nyhetskälla | 3. Reserv (anges som "data via …") |
-|---|---|---|---|
-| OMXS30 | Nasdaq Stockholm (nasdaqomxnordic.com) | Nyhetsbyrån Direkt/Placera, Dagens industri, Reuters | Yahoo Finance, Investing.com |
-| S&P 500 | S&P Dow Jones Indices | Reuters, AP, CNBC, Bloomberg | Yahoo Finance, Investing.com |
-| FTSE 100 | London Stock Exchange (londonstockexchange.com) | Reuters, Bloomberg, Financial Times, Nyhetsbyrån Direkt/Placera | Yahoo Finance, Investing.com |
-| Nikkei | Nikkei Indexes (indexes.nikkei.co.jp) | Reuters, Bloomberg, AP, Nikkei Asia, Jiji Press, Kyodo | Yahoo Finance, Investing.com |
-| Bitcoin, Ethereum | CoinDesk (index) | Reuters, Bloomberg | CoinGecko, CoinMarketCap, Investing.com |
-| EUR/SEK, USD/SEK | Riksbanken eller ECB:s referenskurs | Reuters, Bloomberg | Yahoo Finance, Investing.com |
-| Styrränta | Riksbanken (riksbank.se) | TT, Reuters | – |
-| Guld | LBMA eller CME/Comex | Reuters, Bloomberg | Yahoo Finance, Investing.com |
-| Brent | ICE | Reuters, Bloomberg, Nyhetsbyrån Direkt/Placera | Yahoo Finance, Investing.com |
-
-Andra sajter godtas inte för Marknadsläget, till exempel nyhetsbrev, Substack, innehållsfarmer, Upstox, Ad-hoc-news, Severint och Hurbra. Om ingen godtagbar källa finns: `"—"` och `null`. Fältet `source` listar de källor som faktiskt användes. Varje värde ska ha en tidpunkt, och `as_of` anger den äldsta. Controllern kontrollerar varje värde mot den angivna källan och att ingen bättre källa i tabellen gick att använda.
-
-**Liveuppdatering:** På förstasidan uppdaterar `assets/markets-live.js` Bitcoin och Ethereum (CoinGecko, med Coinbase och Binance som reserv; förändring 24 h), FTSE 100 och Brent (TradingViews officiella widget: FTSE 100 som CFD FOREXCOM:UKXGBP – själva indexet TVC:UKX får inte visas i widgetar – och Brent som TVC:UKOIL) samt EUR/SEK och USD/SEK (ECB:s referenskurs via Frankfurter, förändring mot föregående bankdag) automatiskt i läsarens webbläsare var 15:e minut, med tidsstämpel och källa under rutan. Dessa liveuppdaterade värden är ett undantag från controllergranskningen. Värdena i `markets.json` visas tills liveuppgifterna laddats och som reserv om källan inte svarar, så de ska fortfarande fyllas i som vanligt. Index, räntor och råvaror uppdateras bara med upplagorna.
+- Rader: Index (OMXS30, S&P 500, Nasdaq, NYSE), Krypto (Bitcoin, Ethereum, Solana), Valuta (EUR/SEK, USD/SEK, JPY/SEK), Räntor & råvaror (styrränta, guld, Brent, naturgas).
+- Källordning per rad: TradingView → Yahoo Finance → CoinGecko (krypto) / ECB via Frankfurter (valuta) → senast kända värde. Styrräntan hämtas från Riksbanken. Inget fält lämnas någonsin tomt.
+- Redigera aldrig `content/markets.json` för hand och använd aldrig `"—"`. Gör alltid `git pull --rebase` före push, eftersom arbetsflödet committar var 15:e minut.
+- Marknadsrörelser i artiklar källbeläggs som vanligt; rutan är ingen källa för artiklarna.

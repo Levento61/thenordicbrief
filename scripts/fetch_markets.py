@@ -204,6 +204,12 @@ def main():
                 break
             if t in tv:
                 res, src = tv[t], "TradingView"
+        # Rimlighetskontroll: stora rörelser (utom krypto) jämförs med Yahoo, t.ex. vid terminsrullning
+        if res and src == "TradingView" and group != "Krypto" and ysym and ok(res[1]) and abs(res[1]) > 6:
+            y = yahoo(ysym)
+            if y and ok(y[1]) and abs(y[1] - res[1]) > 3:
+                log.append(f"{name}: TradingView {res[1]:+.2f} % avviker från Yahoo {y[1]:+.2f} % – använder Yahoo")
+                res, src = y, "Yahoo Finance"
         if not res and ysym:
             res = yahoo(ysym)
             src = "Yahoo Finance" if res else None
