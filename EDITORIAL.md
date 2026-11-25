@@ -4,7 +4,7 @@ Den här filen läses av agentlaget vid varje daglig körning. Den är sajtens "
 
 ## Uppdrag
 
-The Nordic Brief publicerar tre gånger om dagen (07.00, 17.00 och 21.00) korta, egna sammanfattningar av det viktigaste inom:
+The Nordic Brief publicerar fyra gånger om dagen (07.00, 12.00, 17.00 och 21.00) korta, egna sammanfattningar av det viktigaste inom:
 
 1. **Sverige** – rikstäckande svenska nyheter (politik, samhälle, väder/kris, brott på samhällsnivå, kultur av nationellt intresse).
 2. **Fotboll** – all europeisk fotboll: de stora ligorna (Premier League, La Liga, Serie A, Bundesliga, Ligue 1), Allsvenskan, Champions League/Europa League/Conference League, landslag och transfers.
@@ -12,11 +12,12 @@ The Nordic Brief publicerar tre gånger om dagen (07.00, 17.00 och 21.00) korta,
 
 Språk: **svenska**. Ton: saklig, tydlig, självsäker, aldrig sensationell.
 
-## Publiceringsschema – tre upplagor per dag
+## Publiceringsschema – fyra upplagor per dag
 
 | Upplaga | Datainsamling till | Publicering | Innehåll |
 |---|---|---|---|
 | **Morgon** | 06.59 | **07.00** | Fullständig upplaga: 3–5 artiklar per sektion (9–15 totalt). Dagens toppnyhet (`featured: true`). Marknadsläget uppdateras. |
+| **Lunch** | 11.59 | **12.00** | Förmiddagens utveckling: 1–3 nya artiklar per sektion (nyheter sedan morgonen, uppföljningar, Stockholmsbörsens förmiddag, dagens fotbollsnyheter och presskonferenser). Marknadsläget uppdateras. |
 | **Eftermiddag** | 16.59 | **17.00** | Dagens utveckling: 2–4 nya artiklar per sektion, uppdatering av morgonens nyheter vid ny utveckling, ny toppnyhet om något större hänt. Marknadsläget efter Stockholmsbörsens stängning. |
 | **Kväll** | 20.59 | **21.00** | Kvällens läge: 1–3 nya artiklar per sektion (kvällsmatcher, USA-börsen, sena besked). Marknadsläget med USA-börsen och krypto. |
 
@@ -27,7 +28,7 @@ Varje upplaga: exakt en artikel i hela sajten har `featured: true` – ta bort f
 ```
 {"label": "Morgonupplaga", "updated": "2026-11-26T07:00:00"}
 ```
-(label: Morgonupplaga / Eftermiddagsupplaga / Kvällsupplaga)
+(label: Morgonupplaga / Lunchupplaga / Eftermiddagsupplaga / Kvällsupplaga)
 
 En nyhet som utvecklas uppdateras i sin befintliga fil (ny text + `updated:`-fält i frontmatter, t.ex. `updated: 2026-11-26T17:00:00`) i stället för att en dubblett skapas.
 
@@ -74,8 +75,8 @@ Varje kategoriagent levererar färdiga artikelfiler (se Filformat) plus en lista
 
 **Instagram-agent** – publicerar upplagan på Instagram (@nordicbrief.se) via Buffer
 - Körs efter att sajten publicerats och endast med controllergodkänt innehåll.
-- Väljer nyheter: morgon = en per sektion (toppnyheten först); eftermiddag/kväll = 1–3 av upplagans viktigaste nya.
-- Skapar kort: `python3 social/make_cards.py --edition morgon|eftermiddag|kvall --posts <filer> [--markets]` (Marknadsläget-kortet tas med i morgon- och eftermiddagsupplagan). Kör sedan `python3 build.py`, committa och pusha, vänta tills första bild-URL:en i `urls.txt` svarar (GitHub Pages behöver ca 1–2 min).
+- Väljer nyheter: morgon = en per sektion (toppnyheten först); lunch/eftermiddag/kväll = 1–3 av upplagans viktigaste nya.
+- Skapar kort: `python3 social/make_cards.py --edition morgon|eftermiddag|kvall --posts <filer> [--markets]` (Marknadsläget-kortet tas med i morgon-, lunch- och eftermiddagsupplagan). Kör sedan `python3 build.py`, committa och pusha, vänta tills första bild-URL:en i `urls.txt` svarar (GitHub Pages behöver ca 1–2 min).
 - Publicerar som karusell med Buffer `create_post`: organisation `6b06d7904246b557f5b02897`, kanal `6b06d7e58541f09ecb9c6fc9`, `schedulingType: automatic`, `mode: shareNow`, `metadata.instagram: {type: post, shouldShareToFeed: true}`, bilderna från `urls.txt` i ordning (alt-text = kortets rubrik), bildtext från `caption.txt`.
 - Om Buffer inte svarar eller publiceringen misslyckas: försök en gång till, annars hoppa över och notera i körningsrapporten. Sajten påverkas aldrig av Instagram-fel.
 - Inga foton, inga personer taggas, inga påhittade citat.

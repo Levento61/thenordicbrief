@@ -30,7 +30,7 @@ SEC = {
     "fotboll": ("Fotboll", "#178a4c"),
     "ekonomi": ("Ekonomi", "#c2185b"),
 }
-EDITIONS = {"morgon": "Morgonens", "eftermiddag": "Eftermiddagens", "kvall": "Kvällens"}
+EDITIONS = {"morgon": "Morgonens", "lunch": "Lunchens", "eftermiddag": "Eftermiddagens", "kvall": "Kvällens"}
 MONTHS = ["jan", "feb", "mars", "april", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"]
 
 
@@ -188,7 +188,7 @@ def load(path):
 
 
 def caption(edition, posts):
-    head = {"morgon": "☀️ Morgonens viktigaste", "eftermiddag": "📰 Eftermiddagens läge", "kvall": "🌙 Kvällens nyheter"}.get(edition, "Dagens nyheter")
+    head = {"morgon": "☀️ Morgonens viktigaste", "lunch": "🍽️ Lunchens nyheter", "eftermiddag": "📰 Eftermiddagens läge", "kvall": "🌙 Kvällens nyheter"}.get(edition, "Dagens nyheter")
     lines = [head, ""]
     for p in posts:
         lines.append(f"▪️ {SEC[p['section']][0]}: {p['title']}")
