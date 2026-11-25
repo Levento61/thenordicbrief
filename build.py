@@ -87,9 +87,18 @@ def load_posts(demo: bool):
 
 
 def load_markets(demo=False):
-    for f in ([CONTENT / "_demo" / "markets.json"] if demo else []) + [CONTENT / "markets.json"]:
-        if f.exists():
-            return json.loads(f.read_text(encoding="utf-8"))
+    """Marknadsläget skrivs av scripts/fetch_markets.py. Saknar content/markets.json dess format
+    (t.ex. om någon redigerat för hand) används skriptets egen kopia data/markets-lastgood.json."""
+    files = ([CONTENT / "_demo" / "markets.json"] if demo else []) + [CONTENT / "markets.json", ROOT / "data" / "markets-lastgood.json"]
+    for f in files:
+        try:
+            m = json.loads(f.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if demo or any(it.get("key") for g in m.get("groups", []) for it in g.get("items", [])):
+            if f.parent.name == "data":
+                shutil.copy(f, CONTENT / "markets.json")
+            return m
     return None
 
 

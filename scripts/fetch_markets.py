@@ -20,6 +20,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT_FILE = ROOT / "content" / "markets.json"
 DOCS_FILE = ROOT / "docs" / "data" / "markets.json"
+SAFE_FILE = ROOT / "data" / "markets-lastgood.json"  # rörs bara av detta skript
 TZ = ZoneInfo("Europe/Stockholm")
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0 Safari/537.36"
 MONTHS = ["jan", "feb", "mars", "apr", "maj", "juni", "juli", "aug", "sep", "okt", "nov", "dec"]
@@ -178,7 +179,7 @@ def fmt_time(iso):
 
 
 def load_previous():
-    for f in (DOCS_FILE, CONTENT_FILE):
+    for f in (SAFE_FILE, DOCS_FILE, CONTENT_FILE):
         try:
             d = json.loads(f.read_text(encoding="utf-8"))
             prev = {it["key"]: it for g in d.get("groups", []) for it in g.get("items", []) if it.get("key")}
@@ -238,7 +239,7 @@ def main():
         "source": ", ".join(srcs),
         "groups": groups,
     }
-    for f in () if test else (CONTENT_FILE, DOCS_FILE):
+    for f in () if test else (CONTENT_FILE, DOCS_FILE, SAFE_FILE):
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     print("\n".join(log))

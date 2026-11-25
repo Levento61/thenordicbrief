@@ -1,0 +1,167 @@
+{
+ "updated": "2026-11-25T21:04:42+00:00",
+ "as_of": "25 nov 22.04",
+ "source": "TradingView, Riksbanken, Yahoo Finance",
+ "groups": [
+  {
+   "title": "Index",
+   "items": [
+    {
+     "key": "omxs30",
+     "name": "OMXS30",
+     "value": "3 188,11",
+     "raw": 3188.1078,
+     "change_pct": -0.81,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    },
+    {
+     "key": "spx",
+     "name": "S&P 500",
+     "value": "7 184,02",
+     "raw": 7184.02,
+     "change_pct": -0.24,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    },
+    {
+     "key": "nasdaq",
+     "name": "Nasdaq",
+     "value": "23 531,63",
+     "raw": 23531.6289,
+     "change_pct": -0.85,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    },
+    {
+     "key": "nyse",
+     "name": "NYSE",
+     "value": "23 354,68",
+     "raw": 23354.6798,
+     "change_pct": 0.44,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    }
+   ]
+  },
+  {
+   "title": "Krypto",
+   "items": [
+    {
+     "key": "btc",
+     "name": "Bitcoin",
+     "value": "60 373 USD",
+     "raw": 60372.95,
+     "change_pct": 1.07,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    },
+    {
+     "key": "eth",
+     "name": "Ethereum",
+     "value": "1 689 USD",
+     "raw": 1688.71,
+     "change_pct": 0.67,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    },
+    {
+     "key": "sol",
+     "name": "Solana",
+     "value": "70,58 USD",
+     "raw": 70.58,
+     "change_pct": 1.44,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    }
+   ]
+  },
+  {
+   "title": "Valuta",
+   "items": [
+    {
+     "key": "eursek",
+     "name": "EUR/SEK",
+     "value": "11,23",
+     "raw": 11.22842,
+     "change_pct": 0.08,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    },
+    {
+     "key": "usdsek",
+     "name": "USD/SEK",
+     "value": "10,23",
+     "raw": 10.2288,
+     "change_pct": -0.01,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    },
+    {
+     "key": "jpysek",
+     "name": "JPY/SEK",
+     "value": "0,0639",
+     "raw": 0.06387,
+     "change_pct": 0.0,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    }
+   ]
+  },
+  {
+   "title": "Räntor & råvaror",
+   "items": [
+    {
+     "key": "policy",
+     "name": "Styrränta (Riksbanken)",
+     "value": "2,00 %",
+     "raw": 2.0,
+     "change_pct": null,
+     "source": "Riksbanken",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    },
+    {
+     "key": "gold",
+     "name": "Guld",
+     "value": "3 571,55 USD",
+     "raw": 3571.55,
+     "change_pct": 0.43,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    },
+    {
+     "key": "brent",
+     "name": "Brent",
+     "value": "90,64 USD",
+     "raw": 90.64,
+     "change_pct": 2.1,
+     "source": "TradingView",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    },
+    {
+     "key": "natgas",
+     "name": "Naturgas",
+     "value": "3,677 USD",
+     "raw": 3.677,
+     "change_pct": 0.38,
+     "source": "Yahoo Finance",
+     "as_of": "2026-11-25T21:04:42+00:00",
+     "stale": false
+    }
+   ]
+  }
+ ]
+}

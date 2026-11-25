@@ -139,5 +139,5 @@ Brödtext i Markdown.
 
 - Rader: Index (OMXS30, S&P 500, Nasdaq, NYSE), Krypto (Bitcoin, Ethereum, Solana), Valuta (EUR/SEK, USD/SEK, JPY/SEK), Räntor & råvaror (styrränta, guld, Brent, naturgas).
 - Källordning per rad: TradingView → Yahoo Finance → CoinGecko (krypto) / ECB via Frankfurter (valuta) → senast kända värde. Styrräntan hämtas från Riksbanken. Inget fält lämnas någonsin tomt.
-- Redigera aldrig `content/markets.json` för hand och använd aldrig `"—"`. Gör alltid `git pull --rebase` före push, eftersom arbetsflödet committar var 15:e minut.
+- Redigera aldrig `content/markets.json` (eller `data/markets-lastgood.json`) för hand och använd aldrig `"—"`. Gör alltid `git pull --rebase` före push, eftersom arbetsflödet committar var 15:e minut.
 - Marknadsrörelser i artiklar källbeläggs som vanligt; rutan är ingen källa för artiklarna.

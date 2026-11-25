@@ -37,7 +37,7 @@ jobs:
         run: |
           git config user.name "Marknadsläget"
           git config user.email "markets@users.noreply.github.com"
-          git add content/markets.json docs/data/markets.json
+          git add content/markets.json docs/data/markets.json data/markets-lastgood.json
           git diff --cached --quiet && { echo "Inga ändringar"; exit 0; }
           git commit -qm "Marknadsläget $(TZ=Europe/Stockholm date '+%Y-%m-%d %H.%M')"
           for i in 1 2 3 4 5; do
