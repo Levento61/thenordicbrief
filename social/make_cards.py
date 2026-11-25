@@ -192,9 +192,32 @@ def caption(edition, posts):
     lines = [head, ""]
     for p in posts:
         lines.append(f"▪️ {SEC[p['section']][0]}: {p['title']}")
-    lines += ["", "Kort, källgranskat och utan brus. Läs mer på nordicbrief.se – länk i bion.", "",
-              "#nyheter #sverige #fotboll #ekonomi #börsen #krypto #nordicbrief"]
+    lines += ["", "Kort, källgranskat och utan brus. Läs mer på nordicbrief.se – länk i bion.", "", hashtags(posts)]
     return "\n".join(lines)
+
+
+TAGS_BASE = ["#nordicbrief", "#nyheter", "#nyheteridag", "#svenskanyheter", "#senastenytt"]
+TAGS_SEC = {
+    "sverige": ["#sverige", "#sverigenyheter", "#inrikes", "#svenskpolitik", "#stockholm", "#göteborg", "#malmö"],
+    "fotboll": ["#fotboll", "#fotbollsnyheter", "#allsvenskan", "#premierleague", "#championsleague",
+                "#laliga", "#seriea", "#bundesliga", "#transfer"],
+    "ekonomi": ["#ekonomi", "#börsen", "#aktier", "#investering", "#privatekonomi", "#krypto", "#bitcoin",
+                "#valuta", "#räntor"],
+}
+
+
+def hashtags(posts, limit=20):
+    """5 bas-taggar + sektionstaggar för de sektioner som finns i inlägget, max `limit` (Instagram tillåter 30)."""
+    tags = list(TAGS_BASE)
+    secs = [p["section"] for p in posts]
+    pools = [list(TAGS_SEC[s]) for s in dict.fromkeys(secs)]
+    while len(tags) < limit and any(pools):
+        for pool in pools:
+            if pool and len(tags) < limit:
+                t = pool.pop(0)
+                if t not in tags:
+                    tags.append(t)
+    return " ".join(tags)
 
 
 def main():

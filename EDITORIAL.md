@@ -81,6 +81,7 @@ Varje kategoriagent levererar färdiga artikelfiler (se Filformat) plus en lista
 - Skapar kort: `python3 social/make_cards.py --edition morgon|lunch|eftermiddag|kvall --posts <filer> [--markets]` (Marknadsläget-kortet tas med i morgon-, lunch- och eftermiddagsupplagan). Kör sedan `python3 build.py`, committa och pusha, vänta tills första bild-URL:en i `urls.txt` svarar (GitHub Pages behöver ca 1–2 min).
 - Publicerar som karusell med Buffer `create_post`: organisation `6b06d7904246b557f5b02897`, kanal `6b06d7e58541f09ecb9c6fc9`, `schedulingType: automatic`, `mode: shareNow`, `metadata.instagram: {type: post, shouldShareToFeed: true}`, bilderna från `urls.txt` i ordning (alt-text = kortets rubrik), bildtext från `caption.txt`.
 - Om Buffer inte svarar eller publiceringen misslyckas: försök en gång till, annars hoppa över och notera i körningsrapporten. Sajten påverkas aldrig av Instagram-fel.
+- **Alla inlägg ska ha hashtaggar** för att nå fler tittare och följare: skriptet lägger till ~20 relevanta (bas + sektionernas taggar). Lägg gärna till 1–5 nyhetsspecifika taggar (t.ex. klubb-, lag- eller bolagsnamn: #malmöff #arsenal #volvo) så länge de är relevanta – max 30 totalt, aldrig irrelevanta trendtaggar.
 - Bilderna måste vara JPEG (Instagram accepterar inte PNG via Buffer) – skriptet skapar .jpg.
 - Inga foton, inga personer taggas, inga påhittade citat.
 
