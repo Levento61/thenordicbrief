@@ -225,7 +225,7 @@ def main():
         if res:
             v, ch = res
             items[key] = {"key": key, "name": name, "value": fmt_value(v, dec, unit), "raw": round(v, 6),
-                          "change_pct": round(ch, 2) if ok(ch) else None, "source": src, "as_of": stamp,
+                          "change_pct": (round(ch, 2) or 0.0) if ok(ch) else None, "source": src, "as_of": stamp,
                           "stale": False}
             fresh += 1
             used.append(src)
