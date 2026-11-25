@@ -284,7 +284,7 @@ def build_index(posts, markets):
         return layout(SITE_NAME, body)
     lead = next((p for p in posts if p["featured"]), posts[0])
     rest = [p for p in posts if p is not lead]
-    top = rest[:4]
+    top = rest[:6]
     cols = []
     for k, v in SECTIONS.items():
         shown = [lead] + top
@@ -300,10 +300,10 @@ def build_index(posts, markets):
   <div class="lead-area">
     {card(lead, 'lead')}
     <div class="top-grid">{''.join(card(p) for p in top)}</div>
+    <div class="columns">{''.join(cols)}</div>
   </div>
   <aside class="side">{markets_box(markets)}{latest_box(posts)}</aside>
-</div>
-<div class="columns">{''.join(cols)}</div>"""
+</div>"""
     return layout(SITE_NAME, body)
 
 

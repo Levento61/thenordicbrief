@@ -63,7 +63,7 @@ main{padding-top:28px;padding-bottom:56px}
 .kicker a{color:var(--accent)}
 
 /* Front page */
-.front{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;padding-bottom:30px;border-bottom:1px solid var(--rule)}
+.front{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start;padding-bottom:30px}
 .card h3{font-family:var(--serif);font-weight:600;margin:0 0 8px;line-height:1.2;letter-spacing:-.01em}
 .card .summary{margin:0;color:#2d333d}
 .card-lead{padding-bottom:24px;margin-bottom:24px;border-bottom:1px solid var(--rule)}
@@ -88,7 +88,8 @@ main{padding-top:28px;padding-bottom:56px}
 .m-src{margin:12px 0 0;font-size:11px;color:#aab6c6}
 
 /* Columns per section */
-.columns{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-top:28px}
+.columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:28px;padding-top:24px;border-top:1px solid var(--rule)}
+.lead-area .col h2{font-size:22px}
 .col h2{font-family:var(--serif);font-size:26px;margin:0 0 10px;padding-bottom:8px;border-bottom:3px solid var(--accent)}
 .col ul{list-style:none;margin:0;padding:0}
 .col li{padding:10px 0;border-bottom:1px solid var(--rule)}
