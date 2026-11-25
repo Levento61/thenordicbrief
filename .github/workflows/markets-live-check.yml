@@ -53,7 +53,7 @@ jobs:
             await p.locator('.markets').screenshot({ path: 'markets.jpg', type: 'jpeg', quality: 60 });
             const eth = await p.$eval('[data-live="eth"] .m-val', e => e.textContent);
             // Vilka symboler visar kurs i TradingViews officiella widget på vår domän?
-            const cands = ['TVC:UKX', 'FOREXCOM:UKXGBP', 'CAPITALCOM:UK100', 'SPREADEX:FTSE', 'TVC:UKOIL', 'FX:UKOIL', 'ICEEUR:BRN1!', 'CAPITALCOM:OIL_BRENT'];
+            const cands = ['FOREXCOM:UKXGBP', 'TVC:UKOIL'];
             const t = await b.newPage();
             await t.goto('https://nordicbrief.se/om/');
             await t.evaluate((cands) => {

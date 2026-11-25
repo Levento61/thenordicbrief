@@ -226,16 +226,18 @@ def chart_svg(c):
 
 LIVE_KEYS = {"Bitcoin": "btc", "Ethereum": "eth", "EUR/SEK": "eursek", "USD/SEK": "usdsek"}
 # Rader som visas live via TradingViews officiella widget i stället för som vanlig rad.
-TV_LIVE = [("FTSE 100", "TVC:UKX"), ("Brent", "TVC:UKOIL")]
+TV_LIVE = [("FTSE 100", "FOREXCOM:UKXGBP"), ("Brent", "TVC:UKOIL")]
 
 
 def tradingview_widget():
-    cfg = {"symbols": [{"proName": sym, "title": name} for name, sym in TV_LIVE],
-           "isTransparent": True, "showSymbolLogo": False, "colorTheme": "dark", "locale": "sv_SE"}
-    return f"""<div class="m-group m-tv"><h4>Live: {" och ".join(n for n, _ in TV_LIVE)}</h4>
-  <div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>{json.dumps(cfg)}</script></div>
-  <p class="m-tv-src">Data via <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">TradingView</a>, kan vara fördröjd.</p>
+    quotes = ""
+    for name, sym in TV_LIVE:
+        cfg = {"symbol": sym, "width": "100%", "isTransparent": True, "colorTheme": "dark", "locale": "sv_SE"}
+        quotes += f"""<div class="tradingview-widget-container" aria-label="{e(name)}"><div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>{json.dumps(cfg)}</script></div>"""
+    return f"""<div class="m-group m-tv"><h4>Live: FTSE 100 och Brent</h4>
+  {quotes}
+  <p class="m-tv-src">FTSE 100 visas som CFD (FOREX.com), Brent som TradingViews Brent-notering (UKOIL). Data via <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">TradingView</a>, kan vara fördröjd.</p>
 </div>"""
 
 
