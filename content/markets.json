@@ -1,0 +1,81 @@
+{
+ "as_of": "25 nov 16.30",
+ "source": "Placera, Yahoo Finance",
+ "groups": [
+  {
+   "title": "Index",
+   "items": [
+    {
+     "name": "OMXS30",
+     "value": "3 208,80",
+     "change_pct": -0.17
+    },
+    {
+     "name": "S&P 500",
+     "value": "7 009,84",
+     "change_pct": -2.66
+    },
+    {
+     "name": "DAX",
+     "value": "—",
+     "change_pct": null
+    },
+    {
+     "name": "Nikkei",
+     "value": "—",
+     "change_pct": null
+    }
+   ]
+  },
+  {
+   "title": "Krypto",
+   "items": [
+    {
+     "name": "Bitcoin",
+     "value": "57 645 USD",
+     "change_pct": -4.51
+    },
+    {
+     "name": "Ethereum",
+     "value": "—",
+     "change_pct": null
+    }
+   ]
+  },
+  {
+   "title": "Valuta",
+   "items": [
+    {
+     "name": "EUR/SEK",
+     "value": "—",
+     "change_pct": null
+    },
+    {
+     "name": "USD/SEK",
+     "value": "—",
+     "change_pct": null
+    }
+   ]
+  },
+  {
+   "title": "Räntor & råvaror",
+   "items": [
+    {
+     "name": "Styrränta (Riksbanken)",
+     "value": "—",
+     "change_pct": null
+    },
+    {
+     "name": "Guld",
+     "value": "3 504,30 USD",
+     "change_pct": -2.42
+    },
+    {
+     "name": "Brent",
+     "value": "—",
+     "change_pct": null
+    }
+   ]
+  }
+ ]
+}
