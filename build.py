@@ -362,6 +362,9 @@ def main():
     if OUT.exists():
         shutil.rmtree(OUT)
     shutil.copytree(ROOT / "assets", OUT / "assets")
+    if (ROOT / "static").exists():
+        for f in (ROOT / "static").iterdir():
+            shutil.copy(f, OUT / f.name)
     write(OUT / "index.html", build_index(posts, markets))
     for k in SECTIONS:
         write(OUT / k / "index.html", build_section(k, posts))
