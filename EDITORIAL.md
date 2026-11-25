@@ -151,7 +151,7 @@ Grupper: Index (OMXS30, S&P 500, DAX, Nikkei), Krypto (Bitcoin, Ethereum), Valut
 | OMXS30 | Nasdaq Stockholm (nasdaqomxnordic.com) | Nyhetsbyrån Direkt/Placera, Dagens industri, Reuters | Yahoo Finance |
 | S&P 500 | S&P Dow Jones Indices | Reuters, AP, CNBC, Bloomberg | Yahoo Finance |
 | DAX | Deutsche Börse (boerse-frankfurt.de) | Reuters, Bloomberg, Handelsblatt | Yahoo Finance |
-| Nikkei | Nikkei Indexes (indexes.nikkei.co.jp) | Reuters, Bloomberg, Nikkei Asia | Yahoo Finance |
+| Nikkei | Nikkei Indexes (indexes.nikkei.co.jp) | Reuters, Bloomberg, AP, Nikkei Asia, Jiji Press, Kyodo | Yahoo Finance |
 | Bitcoin, Ethereum | CoinDesk (index) | Reuters, Bloomberg | CoinGecko, CoinMarketCap |
 | EUR/SEK, USD/SEK | Riksbanken eller ECB:s referenskurs | Reuters, Bloomberg | Yahoo Finance |
 | Styrränta | Riksbanken (riksbank.se) | TT, Reuters | – |
