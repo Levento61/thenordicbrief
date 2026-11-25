@@ -16,10 +16,12 @@ Språk: **svenska**. Ton: saklig, tydlig, självsäker, aldrig sensationell.
 
 | Upplaga | Datainsamling till | Publicering | Innehåll |
 |---|---|---|---|
-| **Morgon** | 06.59 | **07.00** | Fullständig upplaga: 3–5 artiklar per sektion (9–15 totalt). Dagens toppnyhet (`featured: true`). Marknadsläget uppdateras. |
-| **Lunch** | 11.59 | **12.00** | Förmiddagens utveckling: 1–3 nya artiklar per sektion (nyheter sedan morgonen, uppföljningar, Stockholmsbörsens förmiddag, dagens fotbollsnyheter och presskonferenser). Marknadsläget uppdateras. |
-| **Eftermiddag** | 16.59 | **17.00** | Dagens utveckling: 2–4 nya artiklar per sektion, uppdatering av morgonens nyheter vid ny utveckling, ny toppnyhet om något större hänt. Marknadsläget efter Stockholmsbörsens stängning. |
-| **Kväll** | 20.59 | **21.00** | Kvällens läge: 1–3 nya artiklar per sektion (kvällsmatcher, USA-börsen, sena besked). Marknadsläget med USA-börsen och krypto. |
+| **Morgon** | 06.59 | **07.00** | Fullständig upplaga: så många artiklar som kan källbeläggas och granskas ordentligt – sikta på 6–10 per sektion. Dagens toppnyhet (`featured: true`). Marknadsläget uppdateras. |
+| **Lunch** | 11.59 | **12.00** | Förmiddagens utveckling: alla relevanta nya nyheter, sikta på 3–6 per sektion (nyheter sedan morgonen, uppföljningar, Stockholmsbörsens förmiddag, dagens fotbollsnyheter och presskonferenser). Marknadsläget uppdateras. |
+| **Eftermiddag** | 16.59 | **17.00** | Dagens utveckling: alla relevanta nya nyheter, sikta på 4–8 per sektion, uppdatering av morgonens nyheter vid ny utveckling, ny toppnyhet om något större hänt. Marknadsläget efter Stockholmsbörsens stängning. |
+| **Kväll** | 20.59 | **21.00** | Kvällens läge: alla relevanta nya nyheter, sikta på 3–6 per sektion (kvällsmatcher, USA-börsen, sena besked). Marknadsläget med USA-börsen och krypto. |
+
+**Volymprincip:** sajten ska ha så mycket nyheter som möjligt – läsarna vill ha ett konstant flöde. Men varje artikel måste vara verklig, källbelagd och godkänd av controllern; hellre färre än utfyllnad eller dubbletter. Mindre nyheter kan vara korta (80–150 ord).
 
 Tider avser svensk tid (Europe/Stockholm). Körningen startar i förväg; koordinatorn gör en sista kontroll av nyhetsläget strax före publicering och pushar **tidigast** på publiceringsminuten (vänta med `sleep` om laget är klart tidigare).
 
@@ -75,7 +77,7 @@ Varje kategoriagent levererar färdiga artikelfiler (se Filformat) plus en lista
 
 **Instagram-agent** – publicerar upplagan på Instagram (@nordicbrief.se) via Buffer
 - Körs efter att sajten publicerats och endast med controllergodkänt innehåll.
-- Väljer nyheter: morgon = en per sektion (toppnyheten först); lunch/eftermiddag/kväll = 1–3 av upplagans viktigaste nya.
+- **Instagram ska bara innehålla de allra viktigaste nyheterna.** Välj efter nyhetsvärde (påverkan på många människor, stora händelser, stora matcher/transfers, stora marknadsrörelser) – inte för att fylla en kvot per sektion. Morgon: de 3 viktigaste (toppnyheten först). Lunch/eftermiddag/kväll: 1–3 viktigaste nya; finns inget riktigt viktigt nytt, publicera bara Marknadsläget-kortet eller hoppa över inlägget och notera det.
 - Skapar kort: `python3 social/make_cards.py --edition morgon|lunch|eftermiddag|kvall --posts <filer> [--markets]` (Marknadsläget-kortet tas med i morgon-, lunch- och eftermiddagsupplagan). Kör sedan `python3 build.py`, committa och pusha, vänta tills första bild-URL:en i `urls.txt` svarar (GitHub Pages behöver ca 1–2 min).
 - Publicerar som karusell med Buffer `create_post`: organisation `6b06d7904246b557f5b02897`, kanal `6b06d7e58541f09ecb9c6fc9`, `schedulingType: automatic`, `mode: shareNow`, `metadata.instagram: {type: post, shouldShareToFeed: true}`, bilderna från `urls.txt` i ordning (alt-text = kortets rubrik), bildtext från `caption.txt`.
 - Om Buffer inte svarar eller publiceringen misslyckas: försök en gång till, annars hoppa över och notera i körningsrapporten. Sajten påverkas aldrig av Instagram-fel.
