@@ -47,7 +47,7 @@ jobs:
               }
             };
             await tvText(p);
-            await p.locator('.markets').screenshot({ path: 'markets.png' });
+            await p.locator('.markets').screenshot({ path: 'markets.jpg', type: 'jpeg', quality: 60 });
             const eth = await p.$eval('[data-live="eth"] .m-val', e => e.textContent);
             // Vilka symboler visar kurs i TradingViews officiella widget på vår domän?
             const cands = ['TVC:UKX', 'FOREXCOM:UKXGBP', 'CAPITALCOM:UK100', 'SPREADEX:FTSE', 'TVC:UKOIL', 'FX:UKOIL', 'ICEEUR:BRN1!', 'CAPITALCOM:OIL_BRENT'];
@@ -69,13 +69,17 @@ jobs:
             }, cands);
             await t.waitForTimeout(25000);
             await tvText(t);
+            await t.setViewportSize({ width: 400, height: 1100 });
+            await t.screenshot({ path: 'cands.jpg', type: 'jpeg', quality: 45, fullPage: true });
             await b.close();
             if (eth.trim() === '—') { console.log('ETHEREUM SAKNAS'); process.exit(1); }
           })();
           EOF
           node check.js
+          echo "B64MARKETS $(base64 -w 0 markets.jpg)"
+          echo "B64CANDS $(base64 -w 0 cands.jpg)"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: markets-screenshot
-          path: markets.png
+          path: "*.jpg"
