@@ -1,19 +1,19 @@
 {
- "as_of": "25 nov 16.30",
- "source": "Placera/Direkt (OMXS30), AP och Jiji Press (Nikkei), Riksbanken (styrränta), ECB 24 nov (valuta); S&P 500, Bitcoin och guld: data via Yahoo Finance",
+ "as_of": "25 nov 16.13",
+ "source": "Placera/Direkt (OMXS30, 25 nov 17.30), Reuters via RTÉ (Brent, 25 nov 16.13), Reuters via Korea Times (guld, decemberterminen, 25 nov 17.13), CoinDesk (Bitcoin, 25 nov 20.24), Riksbanken (styrränta)",
  "groups": [
   {
    "title": "Index",
    "items": [
     {
      "name": "OMXS30",
-     "value": "3 208,80",
-     "change_pct": -0.17
+     "value": "3 188,11",
+     "change_pct": -0.81
     },
     {
      "name": "S&P 500",
-     "value": "7 009,84",
-     "change_pct": -2.66
+     "value": "—",
+     "change_pct": null
     },
     {
      "name": "FTSE 100",
@@ -22,8 +22,8 @@
     },
     {
      "name": "Nikkei",
-     "value": "57 011,62",
-     "change_pct": -2.78
+     "value": "—",
+     "change_pct": null
     }
    ]
   },
@@ -32,8 +32,8 @@
    "items": [
     {
      "name": "Bitcoin",
-     "value": "57 645 USD",
-     "change_pct": -4.51
+     "value": "ca 60 000 USD",
+     "change_pct": 0.2
     },
     {
      "name": "Ethereum",
@@ -47,12 +47,12 @@
    "items": [
     {
      "name": "EUR/SEK",
-     "value": "11,22",
+     "value": "—",
      "change_pct": null
     },
     {
      "name": "USD/SEK",
-     "value": "10,24",
+     "value": "—",
      "change_pct": null
     }
    ]
@@ -67,13 +67,13 @@
     },
     {
      "name": "Guld",
-     "value": "3 504,30 USD",
-     "change_pct": -2.42
+     "value": "3 445,10 USD",
+     "change_pct": -3.3
     },
     {
      "name": "Brent",
-     "value": "—",
-     "change_pct": null
+     "value": "93,06 USD",
+     "change_pct": 1.82
     }
    ]
   }
