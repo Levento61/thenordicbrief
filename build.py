@@ -225,6 +225,18 @@ def chart_svg(c):
 
 
 LIVE_KEYS = {"Bitcoin": "btc", "Ethereum": "eth", "EUR/SEK": "eursek", "USD/SEK": "usdsek"}
+# Rader som visas live via TradingViews officiella widget i stället för som vanlig rad.
+TV_LIVE = [("FTSE 100", "TVC:UKX"), ("Brent", "TVC:UKOIL")]
+
+
+def tradingview_widget():
+    cfg = {"symbols": [{"proName": sym, "title": name} for name, sym in TV_LIVE],
+           "isTransparent": True, "showSymbolLogo": False, "colorTheme": "dark", "locale": "sv_SE"}
+    return f"""<div class="m-group m-tv"><h4>Live: {" och ".join(n for n, _ in TV_LIVE)}</h4>
+  <div class="tradingview-widget-container"><div class="tradingview-widget-container__widget"></div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-tickers.js" async>{json.dumps(cfg)}</script></div>
+  <p class="m-tv-src">Data via <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">TradingView</a>, kan vara fördröjd.</p>
+</div>"""
 
 
 def markets_box(m):
@@ -234,6 +246,8 @@ def markets_box(m):
     for g in m.get("groups", []):
         rows = []
         for it in g.get("items", []):
+            if it["name"] in dict(TV_LIVE):
+                continue
             ch = it.get("change_pct")
             cls, chs = "", ""
             if isinstance(ch, (int, float)):
@@ -247,7 +261,7 @@ def markets_box(m):
         groups.append(f'<div class="m-group"><h4>{e(g["title"])}</h4><ul>{"".join(rows)}</ul></div>')
     return f"""<section class="markets" aria-label="Marknadsläget">
   <div class="markets-head"><h2>Marknadsläget</h2><p class="asof">{e(m.get('as_of', ''))}</p></div>
-  <div class="m-groups">{"".join(groups)}</div>
+  <div class="m-groups">{"".join(groups)}{tradingview_widget()}</div>
   <p class="m-src">Källa: {e(m.get('source', ''))}. Fördröjda uppgifter, inte investeringsråd.</p>
   <p class="m-src m-live" hidden></p>
 </section>

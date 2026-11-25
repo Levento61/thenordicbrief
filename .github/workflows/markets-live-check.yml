@@ -39,6 +39,11 @@ jobs:
             await p.goto('https://nordicbrief.se/?t=' + Date.now(), { waitUntil: 'networkidle' });
             await p.waitForTimeout(10000);
             console.log(await p.$eval('.markets', e => e.innerText));
+            for (const f of p.frames()) {
+              if (f.url().includes('tradingview')) {
+                try { console.log('TRADINGVIEW:', (await f.evaluate(() => document.body.innerText)).replace(/\s+/g, ' ').slice(0, 400)); } catch (e) { console.log('TRADINGVIEW fel:', e.message); }
+              }
+            }
             const eth = await p.$eval('[data-live="eth"] .m-val', e => e.textContent);
             await b.close();
             if (eth.trim() === '—') { console.log('ETHEREUM SAKNAS'); process.exit(1); }
