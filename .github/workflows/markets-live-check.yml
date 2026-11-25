@@ -8,6 +8,9 @@ on:
       - "assets/markets-live.js"
       - ".github/workflows/markets-live-check.yml"
 
+permissions:
+  contents: write
+
 jobs:
   check:
     runs-on: ubuntu-latest
@@ -76,10 +79,10 @@ jobs:
           })();
           EOF
           node check.js
-          echo "B64MARKETS $(base64 -w 0 markets.jpg)"
-          echo "B64CANDS $(base64 -w 0 cands.jpg)"
-      - uses: actions/upload-artifact@v4
+      - name: Spara skärmbilder i grenen checks
         if: always()
-        with:
-          name: markets-screenshot
-          path: "*.jpg"
+        run: |
+          mkdir out && cp *.jpg out/ 2>/dev/null || true
+          cd out && git init -q -b checks && git add -A
+          git -c user.name=livecheck -c user.email=livecheck@users.noreply.github.com commit -qm "Livekontroll $(date -u +%FT%TZ)" || exit 0
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" checks
