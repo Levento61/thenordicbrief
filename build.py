@@ -6,12 +6,14 @@ Användning:
     python3 build.py --demo     # tar även med exempelinlägg (endast förhandsvisning)
 """
 import datetime as dt
+import email.utils
 import html
 import json
 import re
 import shutil
 import sys
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import markdown
 import yaml
@@ -104,6 +106,32 @@ def load_markets(demo=False):
 
 
 EDITION = {}
+TZ = ZoneInfo("Europe/Stockholm")
+LOGO_URL = SITE_URL + "/assets/logo.png"
+PUBLISHER = {"@type": "Organization", "name": SITE_NAME, "url": SITE_URL + "/",
+             "logo": {"@type": "ImageObject", "url": LOGO_URL, "width": 512, "height": 512}}
+
+
+def aware(d):
+    """Svensk tid med rätt tidszon (vinter- och sommartid)."""
+    if isinstance(d, str):
+        d = dt.datetime.fromisoformat(d)
+    if isinstance(d, dt.date) and not isinstance(d, dt.datetime):
+        d = dt.datetime.combine(d, dt.time(7, 0))
+    return d.replace(tzinfo=TZ) if d.tzinfo is None else d
+
+
+def iso(d):
+    return aware(d).isoformat()
+
+
+def meta_desc(text, limit=155):
+    """Kortar metabeskrivningen vid ett ordslut så att Google inte klipper mitt i en mening."""
+    text = " ".join(str(text).split())
+    if len(text) <= limit:
+        return text
+    cut = text[:limit].rsplit(" ", 1)[0].rstrip(",;:–-")
+    return cut + "…"
 
 
 def edition_line():
@@ -127,11 +155,11 @@ def layout(title, body, description=TAGLINE, path="/", og_type="website", extra_
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(full_title)}</title>
-<meta name="description" content="{e(description)}">
+<meta name="description" content="{e(meta_desc(description))}">
 <link rel="canonical" href="{SITE_URL}{path}">
 <meta property="og:site_name" content="{SITE_NAME}">
 <meta property="og:title" content="{e(title)}">
-<meta property="og:description" content="{e(description)}">
+<meta property="og:description" content="{e(meta_desc(description, 200))}">
 <meta property="og:type" content="{og_type}">
 <meta property="og:url" content="{SITE_URL}{path}">
 <meta property="og:locale" content="sv_SE">
@@ -163,7 +191,7 @@ def layout(title, body, description=TAGLINE, path="/", og_type="website", extra_
     <p class="tagline">{SLOGAN}</p>
   </div>
   <nav class="sections wrap" aria-label="Sektioner">{nav}</nav>
-  <div class="principle"><div class="wrap"><p>Inga bilder, inget brus – bara nyheterna. <a href="/om/#utan-bilder">Därför kör vi minimalistiskt →</a></p></div></div>
+  <div class="principle"><div class="wrap"><p>Bara text, precis som förr. <a href="/om/#utan-bilder">Läs varför vi kör minimalistiskt →</a></p></div></div>
 </header>
 <main class="wrap">
 {body}
@@ -296,8 +324,13 @@ def build_index(posts, markets):
             f'<li><a href="{p["url"]}">{e(p["title"])}</a><time datetime="{p["date"].isoformat()}">{sv_date(p["date"].date())} {p["date"]:%H.%M}</time></li>'
             for p in items)
         cols.append(f'<section class="col sec-{k}"><h2><a href="/{k}/">{v["name"]}</a></h2><ul>{lis}</ul>'
-                    f'<a class="more" href="/{k}/">Mer {v["name"].lower()} →</a></section>')
-    body = f"""<div class="front">
+                    f'<a class="more" href="/{k}/">Mer {v["name"]} →</a></section>')
+    site_ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "WebSite", "name": SITE_NAME, "url": SITE_URL + "/", "inLanguage": "sv-SE"},
+        PUBLISHER]}
+    body = f"""<h1 class="sr-only">{SITE_NAME} – nyheter om Sverige, fotboll och marknader</h1>
+<script type="application/ld+json">{json.dumps(site_ld, ensure_ascii=False)}</script>
+<div class="front">
   <div class="lead-area">
     {card(lead, 'lead')}
     <div class="top-grid">{''.join(card(p) for p in top)}</div>
@@ -329,14 +362,14 @@ def build_post(p, posts):
     ld = {
         "@context": "https://schema.org", "@type": "NewsArticle",
         "headline": p["title"], "description": p["summary"],
-        "datePublished": p["date"].isoformat(), "inLanguage": "sv-SE",
+        "datePublished": iso(p["date"]), "inLanguage": "sv-SE",
+        "dateModified": iso(p.get("updated") or p["date"]),
         "mainEntityOfPage": SITE_URL + p["url"],
-        "publisher": {"@type": "Organization", "name": SITE_NAME},
+        "author": {"@type": "Organization", "name": SITE_NAME + "-redaktionen", "url": SITE_URL + "/om/"},
+        "publisher": PUBLISHER,
         "articleSection": sec,
         "image": [SITE_URL + p["og"]],
     }
-    if p.get("updated"):
-        ld["dateModified"] = dt.datetime.fromisoformat(str(p["updated"])).isoformat()
     extra = f'<script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>'
     body = f"""<article class="post sec-{p['section']}">
   <p class="kicker"><a href="/{p['section']}/">{sec}</a> · <time datetime="{p['date'].isoformat()}">{sv_date(p['date'].date())} {p['date']:%H.%M}</time>{(' · Uppdaterad ' + dt.datetime.fromisoformat(str(p['updated'])).strftime('%H.%M')) if p.get('updated') else ''}</p>
@@ -398,7 +431,7 @@ def build_news_sitemap(posts):
     """Google News-sitemap: artiklar från de senaste två dygnen."""
     newest = max((p["date"] for p in posts), default=dt.datetime.now())
     recent = [p for p in posts if p["date"] >= newest - dt.timedelta(days=2)]
-    items = "".join(f"""<url><loc>{SITE_URL}{p['url']}</loc><news:news><news:publication><news:name>{SITE_NAME}</news:name><news:language>sv</news:language></news:publication><news:publication_date>{p['date'].isoformat()}+01:00</news:publication_date><news:title>{e(p['title'])}</news:title></news:news></url>"""
+    items = "".join(f"""<url><loc>{SITE_URL}{p['url']}</loc><news:news><news:publication><news:name>{SITE_NAME}</news:name><news:language>sv</news:language></news:publication><news:publication_date>{iso(p['date'])}</news:publication_date><news:title>{e(p['title'])}</news:title></news:news></url>"""
                     for p in recent)
     return ('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
             f'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">{items}</urlset>')
@@ -461,7 +494,7 @@ def write(path: Path, text: str):
 
 def build_feed(posts):
     items = "".join(f"""<item><title>{e(p['title'])}</title><link>{SITE_URL}{p['url']}</link>
-<guid>{SITE_URL}{p['url']}</guid><pubDate>{p['date'].strftime('%a, %d %b %Y %H:%M:%S +0100')}</pubDate>
+<guid>{SITE_URL}{p['url']}</guid><pubDate>{email.utils.format_datetime(aware(p['date']))}</pubDate>
 <description>{e(p['summary'])}</description><category>{SECTIONS[p['section']]['name']}</category></item>"""
                     for p in posts[:40])
     return f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -470,8 +503,12 @@ def build_feed(posts):
 
 
 def build_sitemap(posts):
-    urls = ["/", "/om/", "/rattelser/"] + [f"/{k}/" for k in SECTIONS] + [p["url"] for p in posts]
-    body = "".join(f"<url><loc>{SITE_URL}{u}</loc></url>" for u in urls)
+    def last(ps):
+        return max((aware(q.get("updated") or q["date"]) for q in ps), default=aware(dt.datetime.now())).date().isoformat()
+    urls = [("/", last(posts)), ("/om/", None), ("/rattelser/", None)]
+    urls += [(f"/{k}/", last([q for q in posts if q["section"] == k])) for k in SECTIONS]
+    urls += [(q["url"], aware(q.get("updated") or q["date"]).date().isoformat()) for q in posts]
+    body = "".join(f"<url><loc>{SITE_URL}{u}</loc>{f'<lastmod>{m}</lastmod>' if m else ''}</url>" for u, m in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{body}</urlset>'
 
 
