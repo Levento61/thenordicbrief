@@ -1,7 +1,7 @@
 {
- "updated": "2026-11-25T21:06:13+00:00",
- "as_of": "25 nov 22.06",
- "source": "TradingView, Riksbanken, Yahoo Finance",
+ "updated": "2026-11-25T21:09:07+00:00",
+ "as_of": "25 nov 22.09",
+ "source": "TradingView, Yahoo Finance, Riksbanken",
  "groups": [
   {
    "title": "Index",
@@ -13,37 +13,37 @@
      "raw": 3188.1078,
      "change_pct": -0.81,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     },
     {
      "key": "spx",
      "name": "S&P 500",
-     "value": "7 192,31",
-     "raw": 7192.31,
-     "change_pct": -0.12,
+     "value": "7 191,44",
+     "raw": 7191.44,
+     "change_pct": -0.13,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     },
     {
      "key": "nasdaq",
      "name": "Nasdaq",
-     "value": "23 577,96",
-     "raw": 23577.9583,
-     "change_pct": -0.66,
+     "value": "23 567,80",
+     "raw": 23567.8036,
+     "change_pct": -0.7,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     },
     {
      "key": "nyse",
      "name": "NYSE",
-     "value": "23 354,68",
-     "raw": 23354.6798,
-     "change_pct": 0.44,
-     "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "value": "23 531,64",
+     "raw": 23531.637,
+     "change_pct": 0.76,
+     "source": "Yahoo Finance",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     }
    ]
@@ -54,31 +54,31 @@
     {
      "key": "btc",
      "name": "Bitcoin",
-     "value": "60 337 USD",
-     "raw": 60337.38,
-     "change_pct": 1.01,
+     "value": "60 249 USD",
+     "raw": 60249.24,
+     "change_pct": 0.86,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     },
     {
      "key": "eth",
      "name": "Ethereum",
-     "value": "1 688 USD",
-     "raw": 1688.45,
-     "change_pct": 0.65,
+     "value": "1 687 USD",
+     "raw": 1687.29,
+     "change_pct": 0.58,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     },
     {
      "key": "sol",
      "name": "Solana",
-     "value": "70,53 USD",
-     "raw": 70.53,
-     "change_pct": 1.37,
+     "value": "70,45 USD",
+     "raw": 70.45,
+     "change_pct": 1.25,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     }
    ]
@@ -90,30 +90,30 @@
      "key": "eursek",
      "name": "EUR/SEK",
      "value": "11,23",
-     "raw": 11.2288,
+     "raw": 11.2289,
      "change_pct": 0.09,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     },
     {
      "key": "usdsek",
      "name": "USD/SEK",
      "value": "10,23",
-     "raw": 10.23043,
-     "change_pct": 0.0,
+     "raw": 10.23,
+     "change_pct": -0.0,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     },
     {
      "key": "jpysek",
      "name": "JPY/SEK",
      "value": "0,0639",
-     "raw": 0.06387,
-     "change_pct": 0.0,
+     "raw": 0.06385,
+     "change_pct": -0.03,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     }
    ]
@@ -128,17 +128,17 @@
      "raw": 2.0,
      "change_pct": null,
      "source": "Riksbanken",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     },
     {
      "key": "gold",
      "name": "Guld",
-     "value": "3 570,72 USD",
-     "raw": 3570.72,
-     "change_pct": 0.41,
+     "value": "3 574,86 USD",
+     "raw": 3574.86,
+     "change_pct": 0.52,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     },
     {
@@ -148,7 +148,7 @@
      "raw": 90.64,
      "change_pct": 2.1,
      "source": "TradingView",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     },
     {
@@ -158,7 +158,7 @@
      "raw": 3.673,
      "change_pct": 0.27,
      "source": "Yahoo Finance",
-     "as_of": "2026-11-25T21:06:13+00:00",
+     "as_of": "2026-11-25T21:09:07+00:00",
      "stale": false
     }
    ]
