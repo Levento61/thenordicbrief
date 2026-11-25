@@ -130,8 +130,8 @@ def slide4():
 profile_picture()
 urls = []
 for i, f in enumerate([slide1, slide2, slide3, slide4], start=1):
-    p = OUT / f"{i:02d}.png"
-    f().save(p, optimize=True)
+    p = OUT / f"{i:02d}.jpg"
+    f().convert("RGB").save(p, "JPEG", quality=92, optimize=True)
     urls.append(f"{SITE}/social/valkommen/{p.name}")
 (OUT / "urls.txt").write_text("\n".join(urls), encoding="utf-8")
 print("\n".join(urls))

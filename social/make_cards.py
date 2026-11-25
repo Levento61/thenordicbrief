@@ -229,8 +229,8 @@ def main():
             cards.append(markets_card(json.loads(mf.read_text(encoding="utf-8")), total, total))
     urls = []
     for i, im in enumerate(cards, start=1):
-        fn = out / f"{i:02d}.png"
-        im.save(fn, optimize=True)
+        fn = out / f"{i:02d}.jpg"
+        im.convert("RGB").save(fn, "JPEG", quality=92, optimize=True)
         urls.append(f"{SITE}/social/{out.name}/{fn.name}")
     (out / "caption.txt").write_text(caption(a.edition, posts), encoding="utf-8")
     (out / "urls.txt").write_text("\n".join(urls), encoding="utf-8")
