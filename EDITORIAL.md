@@ -143,3 +143,5 @@ Brödtext i Markdown.
 ```
 
 Grupper: Index (OMXS30, S&P 500, DAX, Nikkei), Krypto (Bitcoin, Ethereum), Valuta (EUR/SEK, USD/SEK), Räntor & råvaror (styrränta, guld, Brent). Använd svensk talformatering. `change_pct` = förändring senaste handelsdag, eller `null` om okänd.
+
+**Liveuppdatering:** På förstasidan uppdaterar `assets/markets-live.js` Bitcoin och Ethereum (CoinGecko, förändring 24 h) samt EUR/SEK och USD/SEK (ECB:s referenskurs via Frankfurter, förändring mot föregående bankdag) automatiskt i läsarens webbläsare var 15:e minut, med tidsstämpel och källa under rutan. Dessa fyra värden är ett undantag från controllergranskningen. Värdena i `markets.json` visas tills liveuppgifterna laddats och som reserv om källan inte svarar, så de ska fortfarande fyllas i som vanligt. Index, räntor och råvaror uppdateras bara med upplagorna.

@@ -224,6 +224,9 @@ def chart_svg(c):
 </figure>"""
 
 
+LIVE_KEYS = {"Bitcoin": "btc", "Ethereum": "eth", "EUR/SEK": "eursek", "USD/SEK": "usdsek"}
+
+
 def markets_box(m):
     if not m:
         return ""
@@ -236,7 +239,9 @@ def markets_box(m):
             if isinstance(ch, (int, float)):
                 cls = "up" if ch > 0 else "down" if ch < 0 else ""
                 chs = f"{ch:+.2f} %".replace(".", ",")
-            rows.append(f'<li><span class="m-name">{e(it["name"])}</span>'
+            live = LIVE_KEYS.get(it["name"])
+            attr = f' data-live="{live}"' if live else ""
+            rows.append(f'<li{attr}><span class="m-name">{e(it["name"])}</span>'
                         f'<span class="m-val">{e(str(it["value"]))}</span>'
                         f'<span class="m-ch {cls}">{chs}</span></li>')
         groups.append(f'<div class="m-group"><h4>{e(g["title"])}</h4><ul>{"".join(rows)}</ul></div>')
@@ -244,7 +249,9 @@ def markets_box(m):
   <div class="markets-head"><h2>Marknadsläget</h2><p class="asof">{e(m.get('as_of', ''))}</p></div>
   <div class="m-groups">{"".join(groups)}</div>
   <p class="m-src">Källa: {e(m.get('source', ''))}. Fördröjda uppgifter, inte investeringsråd.</p>
-</section>"""
+  <p class="m-src m-live" hidden></p>
+</section>
+<script src="/assets/markets-live.js" defer></script>"""
 
 
 def build_index(posts, markets):
