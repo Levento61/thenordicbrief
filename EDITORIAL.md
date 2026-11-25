@@ -23,7 +23,7 @@ Språk: **svenska**. Ton: saklig, tydlig, självsäker, aldrig sensationell.
 
 **Volymprincip:** sajten ska ha så mycket nyheter som möjligt – läsarna vill ha ett konstant flöde. Men varje artikel måste vara verklig, källbelagd och godkänd av controllern; hellre färre än utfyllnad eller dubbletter. Mindre nyheter kan vara korta (80–150 ord).
 
-Tider avser svensk tid (Europe/Stockholm). Körningen startar i förväg; koordinatorn gör en sista kontroll av nyhetsläget strax före publicering och pushar **tidigast** på publiceringsminuten (vänta med `sleep` om laget är klart tidigare).
+Tider avser svensk tid (Europe/Stockholm). Körningen startar ca en timme före publiceringen (05.57, 10.57, 15.57 och 19.57) så att agenterna hinner med bredd och granskning; koordinatorn gör en sista kontroll av nyhetsläget strax före publicering och pushar **tidigast** på publiceringsminuten (vänta med `sleep` om laget är klart tidigare).
 
 Varje upplaga: exakt en artikel i hela sajten har `featured: true` – ta bort flaggan från tidigare toppnyhet när en ny väljs. Uppdatera `content/edition.json`:
 
@@ -114,7 +114,7 @@ Undvik: forum, anonyma konton, innehållsfarmer, rena ryktessajter. Transferrykt
 - **Politik:** neutralt, alla sidor lika, inga egna värderingar.
 - **Ekonomi:** inga investeringsråd, inga köp/sälj-rekommendationer.
 - **Bilder:** använd inga bilder från andra sajter.
-- **Rättelser:** fel som upptäcks rättas i filen, med en rad `*Rättat ÅÅÅÅ-MM-DD: …*` sist i texten.
+- **Rättelser:** fel som upptäcks rättas i filen, med en rad `*Rättat ÅÅÅÅ-MM-DD: …*` sist i texten. Exakt det formatet – sidan /rattelser/ samlar raderna automatiskt.
 
 ## Filformat
 
