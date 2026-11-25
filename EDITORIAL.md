@@ -144,4 +144,20 @@ Brödtext i Markdown.
 
 Grupper: Index (OMXS30, S&P 500, DAX, Nikkei), Krypto (Bitcoin, Ethereum), Valuta (EUR/SEK, USD/SEK), Räntor & råvaror (styrränta, guld, Brent). Använd svensk talformatering. `change_pct` = förändring senaste handelsdag, eller `null` om okänd.
 
+**Källor för Marknadsläget – starkast möjliga, i denna ordning per rad.** Använd i första hand primärkällan (börsen, indexägaren, centralbanken). Gå bara vidare till nästa källa om den första inte går att nå eller inte har en aktuell notering:
+
+| Rad | 1. Primärkälla | 2. Etablerad nyhetskälla | 3. Reserv (anges som "data via …") |
+|---|---|---|---|
+| OMXS30 | Nasdaq Stockholm (nasdaqomxnordic.com) | Nyhetsbyrån Direkt/Placera, Dagens industri, Reuters | Yahoo Finance |
+| S&P 500 | S&P Dow Jones Indices | Reuters, AP, CNBC, Bloomberg | Yahoo Finance |
+| DAX | Deutsche Börse (boerse-frankfurt.de) | Reuters, Bloomberg, Handelsblatt | Yahoo Finance |
+| Nikkei | Nikkei Indexes (indexes.nikkei.co.jp) | Reuters, Bloomberg, Nikkei Asia | Yahoo Finance |
+| Bitcoin, Ethereum | CoinDesk (index) | Reuters, Bloomberg | CoinGecko, CoinMarketCap |
+| EUR/SEK, USD/SEK | Riksbanken eller ECB:s referenskurs | Reuters, Bloomberg | Yahoo Finance |
+| Styrränta | Riksbanken (riksbank.se) | TT, Reuters | – |
+| Guld | LBMA eller CME/Comex | Reuters, Bloomberg | Yahoo Finance |
+| Brent | ICE | Reuters, Bloomberg | Yahoo Finance |
+
+Andra sajter godtas inte för Marknadsläget, till exempel nyhetsbrev, Substack, innehållsfarmer, Upstox, Ad-hoc-news, Severint och Hurbra. Om ingen godtagbar källa finns: `"—"` och `null`. Fältet `source` listar de källor som faktiskt användes. Varje värde ska ha en tidpunkt, och `as_of` anger den äldsta. Controllern kontrollerar varje värde mot den angivna källan och att ingen bättre källa i tabellen gick att använda.
+
 **Liveuppdatering:** På förstasidan uppdaterar `assets/markets-live.js` Bitcoin och Ethereum (CoinGecko, förändring 24 h) samt EUR/SEK och USD/SEK (ECB:s referenskurs via Frankfurter, förändring mot föregående bankdag) automatiskt i läsarens webbläsare var 15:e minut, med tidsstämpel och källa under rutan. Dessa fyra värden är ett undantag från controllergranskningen. Värdena i `markets.json` visas tills liveuppgifterna laddats och som reserv om källan inte svarar, så de ska fortfarande fyllas i som vanligt. Index, räntor och råvaror uppdateras bara med upplagorna.

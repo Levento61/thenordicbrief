@@ -1,4 +1,4 @@
-/* Marknadsläget – liveuppdatering av krypto (CoinGecko) och valuta (ECB via Frankfurter) var 15:e minut.
+/* Marknadsläget – liveuppdatering av krypto (CoinDesk-index, reserv CoinGecko) och valuta (ECB via Frankfurter) var 15:e minut.
    Index, räntor och råvaror kommer fortsatt från upplagornas granskade markets.json. */
 (function () {
   var box = document.querySelector(".markets");
@@ -33,13 +33,30 @@
     });
   }
 
-  function crypto() {
+  function fmtCrypto(v) { return nf(0).format(v) + " USD"; }
+  function cryptoCoinDesk() {
+    return getJSON(["https://data-api.coindesk.com/index/cc/v1/latest/tick?market=cadli&instruments=BTC-USD,ETH-USD"])
+      .then(function (d) {
+        var b = d && d.Data && d.Data["BTC-USD"], e = d && d.Data && d.Data["ETH-USD"];
+        if (!b || !e || typeof b.VALUE !== "number" || typeof e.VALUE !== "number") throw new Error("format");
+        set("btc", fmtCrypto(b.VALUE), b.MOVING_24_HOUR_CHANGE_PERCENTAGE);
+        set("eth", fmtCrypto(e.VALUE), e.MOVING_24_HOUR_CHANGE_PERCENTAGE);
+        return "CoinDesk-index";
+      });
+  }
+  function cryptoCoinGecko() {
     return getJSON(["https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true"])
       .then(function (d) {
-        var ok = set("btc", d.bitcoin && nf(0).format(d.bitcoin.usd) + " USD", d.bitcoin && d.bitcoin.usd_24h_change);
-        ok = set("eth", d.ethereum && nf(0).format(d.ethereum.usd) + " USD", d.ethereum && d.ethereum.usd_24h_change) || ok;
-        return ok ? new Date() : null;
-      }).catch(function () { return null; });
+        if (!d.bitcoin || !d.ethereum) throw new Error("format");
+        set("btc", fmtCrypto(d.bitcoin.usd), d.bitcoin.usd_24h_change);
+        set("eth", fmtCrypto(d.ethereum.usd), d.ethereum.usd_24h_change);
+        return "data via CoinGecko";
+      });
+  }
+  function crypto() {
+    return cryptoCoinDesk().catch(cryptoCoinGecko)
+      .then(function (src) { return { at: new Date(), src: src }; })
+      .catch(function () { return null; });
   }
 
   function fx() {
@@ -65,10 +82,10 @@
     Promise.all([crypto(), fx()]).then(function (r) {
       if (!note) return;
       var parts = [];
-      if (r[0]) parts.push("Krypto live " + r[0].toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Stockholm" }).replace(":", ".") + " (CoinGecko, 24 h)");
+      if (r[0]) parts.push("Krypto live " + r[0].at.toLocaleTimeString("sv-SE", { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Stockholm" }).replace(":", ".") + " (" + r[0].src + ", 24 h)");
       if (r[1]) {
         var dt = new Date(r[1] + "T12:00:00Z");
-        parts.push("valuta: ECB:s referenskurs " + dt.toLocaleDateString("sv-SE", { day: "numeric", month: "short", timeZone: "Europe/Stockholm" }) + " (Frankfurter)");
+        parts.push("valuta: ECB:s referenskurs " + dt.toLocaleDateString("sv-SE", { day: "numeric", month: "short", timeZone: "Europe/Stockholm" }) + " (via Frankfurter)");
       }
       if (parts.length) { note.textContent = parts.join(" · ") + ". Uppdateras var 15:e minut."; note.hidden = false; }
     });
