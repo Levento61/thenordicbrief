@@ -39,7 +39,7 @@ jobs:
             const p = await b.newPage();
             p.on('console', m => console.log('console:', m.type(), m.text()));
             p.on('requestfailed', r => console.log('failed:', r.url(), r.failure() && r.failure().errorText));
-            await p.goto('https://nordicbrief.se/?t=' + Date.now(), { waitUntil: 'networkidle' });
+            await p.goto('https://nordicbrief.se/?t=' + Date.now(), { waitUntil: 'load', timeout: 60000 });
             await p.waitForTimeout(25000);
             console.log(await p.$eval('.markets', e => e.innerText));
             const tvText = async (page) => {
