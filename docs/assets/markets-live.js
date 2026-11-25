@@ -1,4 +1,4 @@
-/* Marknadsläget – liveuppdatering av krypto (CoinDesk-index, reserv CoinGecko) och valuta (ECB via Frankfurter) var 15:e minut.
+/* Marknadsläget – liveuppdatering av krypto (CoinDesk-index; reserv CryptoCompare, CoinGecko, Coinbase, Binance) och valuta (ECB via Frankfurter) var 15:e minut.
    Index, räntor och råvaror kommer fortsatt från upplagornas granskade markets.json. */
 (function () {
   var box = document.querySelector(".markets");
@@ -22,41 +22,75 @@
     return true;
   }
 
-  function getJSON(urls) {
-    var url = urls[0];
-    return fetch(url, { cache: "no-store" }).then(function (r) {
+  function fetchJSON(url) {
+    var ctrl = typeof AbortController === "function" ? new AbortController() : null;
+    var t = ctrl ? setTimeout(function () { ctrl.abort(); }, 8000) : null;
+    return fetch(url, { cache: "no-store", signal: ctrl ? ctrl.signal : undefined }).then(function (r) {
+      if (t) clearTimeout(t);
       if (!r.ok) throw new Error(r.status);
       return r.json();
-    }).catch(function (err) {
+    }, function (err) { if (t) clearTimeout(t); throw err; });
+  }
+  function getJSON(urls) {
+    return fetchJSON(urls[0]).catch(function (err) {
       if (urls.length > 1) return getJSON(urls.slice(1));
       throw err;
     });
   }
 
+  /* Kryptokällor i prioritetsordning. Varje källa returnerar {btc: [pris, ändring24h], eth: [...]}. */
+  var num = function (x) { var n = parseFloat(x); return isFinite(n) ? n : null; };
+  var CRYPTO = [
+    { name: "CoinDesk-index", get: function () {
+      return fetchJSON("https://data-api.coindesk.com/index/cc/v1/latest/tick?market=cadli&instruments=BTC-USD,ETH-USD").then(function (d) {
+        var D = (d && d.Data) || {}, f = function (k) { return D[k] ? [num(D[k].VALUE), num(D[k].MOVING_24_HOUR_CHANGE_PERCENTAGE)] : null; };
+        return { btc: f("BTC-USD"), eth: f("ETH-USD") };
+      });
+    } },
+    { name: "CoinDesk/CryptoCompare", get: function () {
+      return fetchJSON("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH&tsyms=USD").then(function (d) {
+        var R = (d && d.RAW) || {}, f = function (k) { return R[k] && R[k].USD ? [num(R[k].USD.PRICE), num(R[k].USD.CHANGEPCT24HOUR)] : null; };
+        return { btc: f("BTC"), eth: f("ETH") };
+      });
+    } },
+    { name: "data via CoinGecko", get: function () {
+      return fetchJSON("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true").then(function (d) {
+        var f = function (k) { return d && d[k] ? [num(d[k].usd), num(d[k].usd_24h_change)] : null; };
+        return { btc: f("bitcoin"), eth: f("ethereum") };
+      });
+    } },
+    { name: "data via Coinbase", get: function () {
+      var one = function (pair) {
+        return fetchJSON("https://api.exchange.coinbase.com/products/" + pair + "/stats").then(function (d) {
+          var last = num(d.last), open = num(d.open);
+          return last ? [last, open ? (last / open - 1) * 100 : null] : null;
+        }).catch(function () { return null; });
+      };
+      return Promise.all([one("BTC-USD"), one("ETH-USD")]).then(function (r) { return { btc: r[0], eth: r[1] }; });
+    } },
+    { name: "data via Binance (USDT)", get: function () {
+      return fetchJSON('https://data-api.binance.vision/api/v3/ticker/24hr?symbols=%5B%22BTCUSDT%22,%22ETHUSDT%22%5D').then(function (arr) {
+        var m = {}; (arr || []).forEach(function (x) { m[x.symbol] = [num(x.lastPrice), num(x.priceChangePercent)]; });
+        return { btc: m.BTCUSDT || null, eth: m.ETHUSDT || null };
+      });
+    } }
+  ];
+
   function fmtCrypto(v) { return nf(0).format(v) + " USD"; }
-  function cryptoCoinDesk() {
-    return getJSON(["https://data-api.coindesk.com/index/cc/v1/latest/tick?market=cadli&instruments=BTC-USD,ETH-USD"])
-      .then(function (d) {
-        var b = d && d.Data && d.Data["BTC-USD"], e = d && d.Data && d.Data["ETH-USD"];
-        if (!b || !e || typeof b.VALUE !== "number" || typeof e.VALUE !== "number") throw new Error("format");
-        set("btc", fmtCrypto(b.VALUE), b.MOVING_24_HOUR_CHANGE_PERCENTAGE);
-        set("eth", fmtCrypto(e.VALUE), e.MOVING_24_HOUR_CHANGE_PERCENTAGE);
-        return "CoinDesk-index";
-      });
-  }
-  function cryptoCoinGecko() {
-    return getJSON(["https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true"])
-      .then(function (d) {
-        if (!d.bitcoin || !d.ethereum) throw new Error("format");
-        set("btc", fmtCrypto(d.bitcoin.usd), d.bitcoin.usd_24h_change);
-        set("eth", fmtCrypto(d.ethereum.usd), d.ethereum.usd_24h_change);
-        return "data via CoinGecko";
-      });
-  }
   function crypto() {
-    return cryptoCoinDesk().catch(cryptoCoinGecko)
-      .then(function (src) { return { at: new Date(), src: src }; })
-      .catch(function () { return null; });
+    var need = { btc: true, eth: true }, used = [];
+    function next(i) {
+      if (i >= CRYPTO.length || (!need.btc && !need.eth)) return Promise.resolve();
+      return CRYPTO[i].get().catch(function () { return {}; }).then(function (r) {
+        var hit = false;
+        ["btc", "eth"].forEach(function (k) {
+          if (need[k] && r && r[k] && r[k][0] && set(k, fmtCrypto(r[k][0]), r[k][1])) { need[k] = false; hit = true; }
+        });
+        if (hit) used.push(CRYPTO[i].name);
+        return next(i + 1);
+      });
+    }
+    return next(0).then(function () { return used.length ? { at: new Date(), src: used.join(" + ") } : null; });
   }
 
   function fx() {
