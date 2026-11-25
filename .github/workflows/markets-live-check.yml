@@ -37,16 +37,45 @@ jobs:
             p.on('console', m => console.log('console:', m.type(), m.text()));
             p.on('requestfailed', r => console.log('failed:', r.url(), r.failure() && r.failure().errorText));
             await p.goto('https://nordicbrief.se/?t=' + Date.now(), { waitUntil: 'networkidle' });
-            await p.waitForTimeout(10000);
+            await p.waitForTimeout(25000);
             console.log(await p.$eval('.markets', e => e.innerText));
-            for (const f of p.frames()) {
-              if (f.url().includes('tradingview')) {
-                try { console.log('TRADINGVIEW:', (await f.evaluate(() => document.body.innerText)).replace(/\s+/g, ' ').slice(0, 400)); } catch (e) { console.log('TRADINGVIEW fel:', e.message); }
+            const tvText = async (page) => {
+              for (const f of page.frames()) {
+                if (f.url().includes('tradingview')) {
+                  try { console.log('TRADINGVIEW:', (await f.evaluate(() => document.body.innerText)).replace(/\s+/g, ' ').slice(0, 300)); } catch (e) { console.log('TRADINGVIEW fel:', e.message); }
+                }
               }
-            }
+            };
+            await tvText(p);
+            await p.locator('.markets').screenshot({ path: 'markets.png' });
             const eth = await p.$eval('[data-live="eth"] .m-val', e => e.textContent);
+            // Vilka symboler visar kurs i TradingViews officiella widget på vår domän?
+            const cands = ['TVC:UKX', 'FOREXCOM:UKXGBP', 'CAPITALCOM:UK100', 'SPREADEX:FTSE', 'TVC:UKOIL', 'FX:UKOIL', 'ICEEUR:BRN1!', 'CAPITALCOM:OIL_BRENT'];
+            const t = await b.newPage();
+            await t.goto('https://nordicbrief.se/om/');
+            await t.evaluate((cands) => {
+              document.body.innerHTML = '';
+              for (const s of cands) {
+                const d = document.createElement('div');
+                d.className = 'tradingview-widget-container';
+                d.innerHTML = '<div class="tradingview-widget-container__widget"></div>';
+                const sc = document.createElement('script');
+                sc.src = 'https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js';
+                sc.async = true;
+                sc.text = JSON.stringify({ symbol: s, width: 350, isTransparent: false, colorTheme: 'light', locale: 'en' });
+                d.appendChild(sc);
+                document.body.appendChild(d);
+              }
+            }, cands);
+            await t.waitForTimeout(25000);
+            await tvText(t);
             await b.close();
             if (eth.trim() === '—') { console.log('ETHEREUM SAKNAS'); process.exit(1); }
           })();
           EOF
           node check.js
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: markets-screenshot
+          path: markets.png
