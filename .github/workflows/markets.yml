@@ -31,7 +31,8 @@ jobs:
         continue-on-error: true
       - name: Testa backupkedjan utan TradingView (bara vid kodändring)
         if: github.event_name == 'push'
-        run: { echo; echo "=== BACKUPTEST (utan TradingView) ==="; python3 scripts/fetch_markets.py --test-backup; } >> fetch.log 2>&1 || true
+        run: |
+          { echo; echo "=== BACKUPTEST (utan TradingView) ==="; python3 scripts/fetch_markets.py --test-backup; } >> fetch.log 2>&1 || true
       - name: Spara och publicera
         run: |
           git config user.name "Marknadsläget"
