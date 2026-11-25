@@ -138,3 +138,32 @@ main{padding-top:28px;padding-bottom:56px}
 }
 .m-tv .tradingview-widget-container{min-height:68px;margin:2px -4px 0}
 .m-tv-src{margin:4px 0 0;font-size:11px;color:#aab6c6}.m-tv-src a{color:inherit}
+
+/* Senaste-flödet */
+.latest{margin-top:24px;border-top:3px solid var(--ink);padding-top:10px}
+.latest h2{font-family:var(--serif);font-size:22px;margin:0 0 6px}
+.latest ol{list-style:none;margin:0;padding:0}
+.latest li{display:grid;grid-template-columns:44px 1fr;column-gap:8px;padding:8px 0;border-bottom:1px solid var(--rule);font-size:14px;line-height:1.35}
+.latest time{grid-row:span 2;font-variant-numeric:tabular-nums;color:var(--muted);font-weight:600}
+.latest .l-sec{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.latest a{font-weight:600}
+.latest .sec-sverige{--accent:var(--sverige)} .latest .sec-fotboll{--accent:var(--fotboll)} .latest .sec-ekonomi{--accent:var(--ekonomi)}
+
+/* Rättelser */
+.corrections{list-style:none;padding:0;margin:20px 0 0}
+.corrections li{padding:12px 0;border-bottom:1px solid var(--rule)}
+.corrections time{color:var(--muted);font-size:14px}
+.corrections p{margin:4px 0 0}
+
+/* Mörkt läge */
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#0f1216; --ink:#e8eaed; --muted:#9aa3ad; --rule:#2a2f36; --card:#171b21;
+    --navy:#1a1f27; --sverige:#6d9cff; --fotboll:#4cc38a; --ekonomi:#ff6fa3;
+    --up:#4cc38a; --down:#ff7a70;
+  }
+  .footer{background:#0a0c0f}
+  .card .summary,.post .dek{color:#c3c8cf}
+  .logo-mark{background:#1a1f27;outline:1px solid #2a2f36}
+  .chart .a{opacity:.25}
+}
