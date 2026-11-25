@@ -1,4 +1,4 @@
-/* Marknadsläget – liveuppdatering av krypto (CoinDesk-index; reserv CryptoCompare, CoinGecko, Coinbase, Binance) och valuta (ECB via Frankfurter) var 15:e minut.
+/* Marknadsläget – liveuppdatering av krypto (CoinGecko; reserv Coinbase, Binance) och valuta (ECB via Frankfurter) var 15:e minut.
    Index, räntor och råvaror kommer fortsatt från upplagornas granskade markets.json. */
 (function () {
   var box = document.querySelector(".markets");
@@ -41,18 +41,7 @@
   /* Kryptokällor i prioritetsordning. Varje källa returnerar {btc: [pris, ändring24h], eth: [...]}. */
   var num = function (x) { var n = parseFloat(x); return isFinite(n) ? n : null; };
   var CRYPTO = [
-    { name: "CoinDesk-index", get: function () {
-      return fetchJSON("https://data-api.coindesk.com/index/cc/v1/latest/tick?market=cadli&instruments=BTC-USD,ETH-USD").then(function (d) {
-        var D = (d && d.Data) || {}, f = function (k) { return D[k] ? [num(D[k].VALUE), num(D[k].MOVING_24_HOUR_CHANGE_PERCENTAGE)] : null; };
-        return { btc: f("BTC-USD"), eth: f("ETH-USD") };
-      });
-    } },
-    { name: "CoinDesk/CryptoCompare", get: function () {
-      return fetchJSON("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH&tsyms=USD").then(function (d) {
-        var R = (d && d.RAW) || {}, f = function (k) { return R[k] && R[k].USD ? [num(R[k].USD.PRICE), num(R[k].USD.CHANGEPCT24HOUR)] : null; };
-        return { btc: f("BTC"), eth: f("ETH") };
-      });
-    } },
+    /* CoinDesk och CryptoCompare kräver API-nyckel och saknar CORS (kontrollerat 25 nov 2026) – används inte här. */
     { name: "data via CoinGecko", get: function () {
       return fetchJSON("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_24hr_change=true").then(function (d) {
         var f = function (k) { return d && d[k] ? [num(d[k].usd), num(d[k].usd_24h_change)] : null; };
