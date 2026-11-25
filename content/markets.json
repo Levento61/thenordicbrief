@@ -1,6 +1,6 @@
 {
  "as_of": "25 nov 16.30",
- "source": "Placera, Yahoo Finance",
+ "source": "Placera/Direkt (OMXS30), AP och Jiji Press (Nikkei), Riksbanken (styrränta), ECB 24 nov (valuta); S&P 500, Bitcoin och guld: data via Yahoo Finance",
  "groups": [
   {
    "title": "Index",
@@ -22,8 +22,8 @@
     },
     {
      "name": "Nikkei",
-     "value": "—",
-     "change_pct": null
+     "value": "57 011,62",
+     "change_pct": -2.78
     }
    ]
   },
@@ -47,12 +47,12 @@
    "items": [
     {
      "name": "EUR/SEK",
-     "value": "—",
+     "value": "11,22",
      "change_pct": null
     },
     {
      "name": "USD/SEK",
-     "value": "—",
+     "value": "10,24",
      "change_pct": null
     }
    ]
@@ -62,7 +62,7 @@
    "items": [
     {
      "name": "Styrränta (Riksbanken)",
-     "value": "—",
+     "value": "2,00 %",
      "change_pct": null
     },
     {
