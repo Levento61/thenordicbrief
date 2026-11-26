@@ -1,10 +1,16 @@
 ---
-title: "Skadedrabbat Milan under press i Aten – Amorim kräver seger"
-summary: "Milan har bara tre poäng efter fyra matcher i Europa League och möter i kväll Olympiacos borta. Tränaren Rúben Amorim saknar ett tiotal spelare."
+title: "Milan vände 0–2 till seger i Aten – Moreira avgjorde sent"
+summary: "Milan hämtade upp ett tvåmålsunderläge och vann med 4–2 borta mot Olympiacos i Europa League. Omari Hutchinson låg bakom vändningen med ett mål och två målgivande passningar."
+slug: skadedrabbat-milan-under-press-i-aten-amorim-kraver-seger
 section: fotboll
 date: 2026-11-26T18:00:00
+updated: 2026-11-26T21:00:00
 featured: false
 sources:
+  - name: "Football Italia"
+    url: "https://football-italia.net/uel-olympiacos-2-4-milan-hutchinson-inspired/"
+  - name: "ERT Sports"
+    url: "https://www.ertsports.gr/podosfairo/europa-league/olympiakos-milan-2-4-apo-ton-paradeiso-stin-kolasi-mesa-se-15-lepta-oi-erythroleykoi/"
   - name: "Football Italia"
     url: "https://football-italia.net/amorim-milan-must-do-well-in-europa-league"
   - name: "Yahoo Sports"
@@ -12,12 +18,10 @@ sources:
   - name: "Milan Reports"
     url: "https://milanreports.com/2026/11/25/amorim-we-have-to-win-tomorrow/"
 ---
-Milan går in i kvällens Europa League-match mot Olympiacos med ryggen mot väggen. Efter fyra omgångar har det italienska laget bara en seger, 4–0 borta mot Salzburg, och tre förluster – mot Benfica, Bournemouth och Ferencváros, samtliga utan eget mål. Med tre poäng ligger Milan på 28:e plats, utanför slutspelsplatserna. Olympiacos är sexa med tio poäng.
+Pressade Milan tog en viktig seger i Europa League på torsdagskvällen. Olympiacos gick upp till 2–0 på Karaiskakis, men italienarna svarade med fyra raka mål och vann med 4–2.
 
-Matchen i Aten börjar 18.45 svensk tid.
+Hemmalaget tog ledningen i den 31:a minuten, i ett mål som enligt Football Italia bokfördes som självmål av Milans målvakt Mike Maignan. Jota Silva gjorde 2–0 strax efter paus.
 
-På presskonferensen inför matchen var tränaren Rúben Amorim tydlig med att laget behöver vinna. Han beskrev Olympiacos som ett aggressivt lag, särskilt på hemmaplan, och medgav att Milan måste bli bättre i sista tredjedelen och har släppt in mål i nästan varje match. Han avfärdade samtidigt att rotationen skulle förklara de europeiska förlusterna och menade att ett bra lag måste prestera både i ligan och i Europa.
+Sedan tog Omari Hutchinson över. Han reducerade i den 56:e minuten och spelade därefter fram Alphadjo Cissé till kvitteringen i den 63:e och Christian Pulisic till ledningsmålet i den 71:a. Diego Moreira fastställde slutresultatet på tilläggstid efter förarbete av Pulisic.
 
-Frånvarolistan är lång. Enligt Football Italia saknas bland andra Luka Modrić, Strahinja Pavlović, Fikayo Tomori, Matteo Gabbia, Ruben Loftus-Cheek, Samuel Chukwueze och Alexis Saelemaekers. Målvakten Mike Maignan är däremot tillbaka efter avstängning, och Gonçalo Ramos väntas klara en lättare vadskada.
-
-Även Olympiacos har avbräck, med Ayoub El Kaabi och Yusuf Yazıcı borta sedan länge. Milan kommer närmast från en 5–1-seger mot Frosinone i Serie A.
+Milan hade före matchen bara tre poäng efter fyra omgångar och låg på 28:e plats, utanför slutspelsplatserna. Olympiacos gick in i omgången som sexa med tio poäng. Tränaren Rúben Amorim hade inför mötet slagit fast att laget behövde vinna.

@@ -1,11 +1,16 @@
 ---
-title: "C:s ledning säger ja till Kristersson som statsminister"
-summary: "Centerpartiets partistyrelse och riksdagsgrupp vill rösta ja till Ulf Kristersson (M) som statsminister på måndag. Beskedet lämnades av partiledaren Elisabeth Thand Ringqvist efter ett möte som pågick hela eftermiddagen."
+title: "Intern kritik i C efter ledningens ja till Kristersson"
+summary: "C-ledningen vill rösta ja till Ulf Kristersson (M) som statsminister och gå in i en minoritetsregering, men beslutet möter hård kritik i partiet. Förtroenderådet avgör frågan på söndag."
+slug: c-s-ledning-sager-ja-till-kristersson-som-statsminister
 section: sverige
 date: 2026-11-26T12:00:00
-updated: 2026-11-26T18:00:00
+updated: 2026-11-26T21:00:00
 featured: true
 sources:
+  - name: "SVT Nyheter"
+    url: "https://www.svt.se/nyheter/inrikes/c-ledningen-sager-ja-till-ulf-kristersson"
+  - name: "TV4 Nyheterna"
+    url: "https://www.tv4.se/artikel/1NhzURHX9CdlZptvFi4d2H/interna-ilskan-efter-c-ledarens-stoed-till-kristersson-katastrof"
   - name: "Corren (TT)"
     url: "https://www.corren.se/nyheter/inrikes/politik/artikel/cs-partistyrelse-sager-ja-till-kristersson/jvzxeyyr"
   - name: "SVT Nyheter (direktrapportering)"
@@ -21,16 +26,14 @@ sources:
   - name: "TV4 Nyheterna"
     url: "https://www.tv4.se/artikel/ingaByFj5CNMFw0QUDAj3/kaellor-inom-c-finns-stoed-att-roesta-groent-foer-kristersson"
 ---
-Centerpartiets partistyrelse och riksdagsgrupp vill att partiet röstar ja till Moderaternas ledare Ulf Kristersson som statsminister i måndagens omröstning. Det meddelade partiledaren Elisabeth Thand Ringqvist på torsdagskvällen efter flera timmars möte, enligt TT och SVT. Omröstningen gäller en regering av de fyra borgerliga partierna.
+Centerpartiets ledning vill att partiet röstar ja till Moderaternas ledare Ulf Kristersson som statsminister på måndag och går in i en minoritetsregering. Det meddelade partiledaren Elisabeth Thand Ringqvist på en pressträff på torsdagskvällen. Beslutet i partistyrelsen hade majoritet men var inte enhälligt, enligt SVT.
 
-De fyra borgerliga partierna Moderaterna, Kristdemokraterna, Liberalerna och Centerpartiet nådde sent på onsdagen en överenskommelse om en politisk inriktning för den kommande mandatperioden. Det uppgav SVT:s källor tidigare under dagen, och enligt TT finns en överenskommelse som C:s företrädare ska ta ställning till.
+Sista ordet är inte sagt. Partiets förtroenderåd, det högsta beslutande organet mellan stämmorna, samlas på söndag och fattar det slutliga beslutet, enligt TV4. Dagen efter, måndagen den 30 november, röstar riksdagen om Kristersson.
 
-Enligt SVT ligger tyngdpunkten på tillväxt och välfärd, och överenskommelsen innehåller också en strategi för hur en planerad minoritetsregering ska söka stöd i riksdagen. Inriktningen beskrivs som en tydlig förändring jämfört med de senaste fyra åren.
+Kritiken inom partiet kom snabbt. Jonas Naddebo, C:s distriktsordförande i Stockholms stad, kallar beskedet en katastrof, och riksdagsledamoten Birgitta Ohlsson säger att många tycker att det är fel väg att gå. Även Centerkvinnornas ordförande Mari-Louise Wernersson säger att förbundet är emot beslutet. Aida Karimli, ledamot i förtroenderådet, varnar för att partiet blir splittrat.
 
-C-ledningen presenterade uppgörelsen för partistyrelsen och riksdagsgruppen vid ett extrainkallat möte som inleddes vid lunchtid och pågick under hela eftermiddagen. Beskedet lämnades på en pressträff i riksdagens presscenter klockan 17.40.
+Thand Ringqvist har uppgett att hon hade avgått om C hade släppt in Vänsterpartiet i en regering, rapporterar SVT. Till TV4 säger hon att hon i förväg informerat partistyrelsen om att hon inte ansåg sig vara rätt person att leda partiet i det läget eller in i ett extraval.
 
-Enligt SVT:s källor väntas partiets förtroenderåd också behandla frågan.
+Om förhållandet till Sverigedemokraterna säger partiledaren att inga löften har getts och att det inte finns något avtal om ett strukturerat budgetsamarbete. Kristersson har välkomnat C:s besked.
 
-Motståndet inom partiet är samtidigt tydligt. En C-källa säger till SVT att en sådan linje skulle splittra partiet. Centerkvinnorna, ungdomsförbundet och en av partiets EU-parlamentariker har sagt nej till en Kristerssonledd regering, och enligt DN vill en grupp inom C att förtroenderådet beslutar att partiet röstar nej.
-
-Riksdagen röstar om Kristersson som statsminister på måndag den 30 november. Godkänns han kan en ny regering enligt SVT:s källor presenteras fredagen den 4 december.
+De fyra borgerliga partierna M, KD, L och C nådde en överenskommelse om politisk inriktning sent på onsdagen, enligt SVT:s källor, med tyngdpunkt på tillväxt och välfärd. Godkänns Kristersson kan en ny regering enligt samma källor presenteras fredagen den 4 december.
