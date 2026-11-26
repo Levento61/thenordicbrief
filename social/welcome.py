@@ -88,10 +88,10 @@ def slide3():
     d.text((80, 100), "SÅ FUNKAR DET", font=font("Inter-Bold", 32), fill=MUTED)
     d.text((80, 150), "Fyra upplagor", font=font("Fraunces-ExtraBold", 96), fill=INK)
     d.text((80, 260), "om dagen.", font=font("Fraunces-ExtraBold", 96), fill=INK)
-    times = [("07.00", "Morgon", "Allt du missat under natten"),
-             ("12.00", "Lunch", "Förmiddagens utveckling"),
-             ("17.00", "Eftermiddag", "Dagens läge och börsens stängning"),
-             ("21.00", "Kväll", "Kvällens matcher och sena besked")]
+    times = [("08.00", "Morgon", "Allt du missat under natten"),
+             ("13.00", "Lunch", "Förmiddagens utveckling"),
+             ("18.00", "Kväll", "Dagens läge och börsens stängning"),
+             ("10.30 · 15 · 21", "Snabbkoll", "Stora nyheter direkt när de händer")]
     y = 440
     for t, n, desc in times:
         d.text((80, y), t, font=font("Fraunces-ExtraBold", 72), fill=INK)

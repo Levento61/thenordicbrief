@@ -4,7 +4,7 @@ Den här filen läses av agentlaget vid varje daglig körning. Den är sajtens "
 
 ## Uppdrag
 
-The Nordic Brief publicerar fyra gånger om dagen (07.00, 12.00, 17.00 och 21.00) korta, egna sammanfattningar av det viktigaste inom:
+The Nordic Brief publicerar tre fulla upplagor om dagen (08.00, 13.00 och 18.00) och gör snabbkoller efter stora nyheter däremellan (10.30, 15.00 och 21.00). Vi skriver korta, egna sammanfattningar av det viktigaste inom:
 
 1. **Sverige** – rikstäckande svenska nyheter (politik, samhälle, väder/kris, brott på samhällsnivå, kultur av nationellt intresse).
 2. **Fotboll** – all europeisk fotboll: de stora ligorna (Premier League, La Liga, Serie A, Bundesliga, Ligue 1), Allsvenskan, Champions League/Europa League/Conference League, landslag och transfers.
@@ -12,27 +12,40 @@ The Nordic Brief publicerar fyra gånger om dagen (07.00, 12.00, 17.00 och 21.00
 
 Språk: **svenska**. Ton: saklig, tydlig, självsäker, aldrig sensationell.
 
-## Publiceringsschema – fyra upplagor per dag
+## Publiceringsschema – tre upplagor och tre snabbkoller per dag
 
-| Upplaga | Datainsamling till | Publicering | Innehåll |
-|---|---|---|---|
-| **Morgon** | 06.59 | **07.00** | Fullständig upplaga: så många artiklar som kan källbeläggas och granskas ordentligt – sikta på 6–10 per sektion. Dagens toppnyhet (`featured: true`). |
-| **Lunch** | 11.59 | **12.00** | Förmiddagens utveckling: alla relevanta nya nyheter, sikta på 3–6 per sektion (nyheter sedan morgonen, uppföljningar, Stockholmsbörsens förmiddag, dagens fotbollsnyheter och presskonferenser). |
-| **Eftermiddag** | 16.59 | **17.00** | Dagens utveckling: alla relevanta nya nyheter, sikta på 4–8 per sektion, uppdatering av morgonens nyheter vid ny utveckling, ny toppnyhet om något större hänt. |
-| **Kväll** | 20.59 | **21.00** | Kvällens läge: alla relevanta nya nyheter, sikta på 3–6 per sektion (kvällsmatcher, USA-börsen, sena besked). |
+| Körning | Typ | Datainsamling till | Publicering | Innehåll |
+|---|---|---|---|---|
+| **Morgon** | Full upplaga | 07.59 | **08.00** | Fullständig upplaga: så många artiklar som kan källbeläggas och granskas ordentligt – sikta på 6–10 per sektion. Dagens toppnyhet (`featured: true`). |
+| Snabbkoll | Lätt | 10.29 | **10.30** | Endast stora nyheter sedan morgonen (se *Snabbkoll-agent*). Ofta inget alls. |
+| **Lunch** | Full upplaga | 12.59 | **13.00** | Förmiddagens utveckling: alla relevanta nya nyheter, sikta på 3–6 per sektion (uppföljningar, Stockholmsbörsens förmiddag, dagens fotbollsnyheter och presskonferenser). |
+| Snabbkoll | Lätt | 14.59 | **15.00** | Endast stora nyheter sedan lunch. |
+| **Kväll** | Full upplaga | 17.59 | **18.00** | Dagens läge: alla relevanta nya nyheter, sikta på 4–8 per sektion (Stockholmsbörsens stängning, USA-börsens öppning, kvällens matcher, uppdatering av dagens nyheter vid ny utveckling). Ny toppnyhet om något större hänt. |
+| Snabbkoll | Lätt | 20.59 | **21.00** | Endast stora nyheter sedan 18.00 – t.ex. stora matchresultat, sena besked, USA-börsen. |
 
-**Volymprincip:** sajten ska ha så mycket nyheter som möjligt – läsarna vill ha ett konstant flöde. Men varje artikel måste vara verklig, källbelagd och godkänd av controllern; hellre färre än utfyllnad eller dubbletter. Mindre nyheter kan vara korta (80–150 ord).
+**Volymprincip:** de fulla upplagorna ska ha så mycket nyheter som möjligt – läsarna vill ha ett konstant flöde. Men varje artikel måste vara verklig, källbelagd och godkänd av controllern; hellre färre än utfyllnad eller dubbletter. Mindre nyheter kan vara korta (80–150 ord).
 
-Tider avser svensk tid (Europe/Stockholm). Körningen startar ca en timme före publiceringen (05.57, 10.57, 15.57 och 19.57) så att agenterna hinner med bredd och granskning; koordinatorn gör en sista kontroll av nyhetsläget strax före publicering och pushar **tidigast** på publiceringsminuten (vänta med `sleep` om laget är klart tidigare).
+Tider avser svensk tid (Europe/Stockholm). Fulla upplagor startar ca en timme före publiceringen (06.57, 11.57 och 16.57) så att agenterna hinner med bredd och granskning; koordinatorn gör en sista kontroll av nyhetsläget strax före publicering och pushar **tidigast** på publiceringsminuten (vänta med `sleep` om laget är klart tidigare). Snabbkoller startar ca 20 minuter före (10.10, 14.40 och 20.40).
 
-Varje upplaga: exakt en artikel i hela sajten har `featured: true` – ta bort flaggan från tidigare toppnyhet när en ny väljs. Uppdatera `content/edition.json`:
+Varje full upplaga: exakt en artikel i hela sajten har `featured: true` – ta bort flaggan från tidigare toppnyhet när en ny väljs. Uppdatera `content/edition.json`:
 
 ```
-{"label": "Morgonupplaga", "updated": "2026-11-26T07:00:00"}
+{"label": "Morgonupplaga", "updated": "2026-11-26T08:00:00"}
 ```
-(label: Morgonupplaga / Lunchupplaga / Eftermiddagsupplaga / Kvällsupplaga)
+(label: Morgonupplaga / Lunchupplaga / Kvällsupplaga; en snabbkoll som publicerar använder "Uppdatering")
 
-En nyhet som utvecklas uppdateras i sin befintliga fil (ny text + `updated:`-fält i frontmatter, t.ex. `updated: 2026-11-26T17:00:00`) i stället för att en dubblett skapas.
+## Snabbkoll-agent
+
+En enda lätt agent (ingen koordinator med sektionslag, ingen Instagram) som körs 10.30, 15.00 och 21.00.
+
+1. Läs `logs/published.txt` och senaste rapporten i `logs/runs/` – vad har redan publicerats i dag?
+2. Sök efter **stora** nyheter sedan senaste körningen inom sajtens tre områden. Stor nyhet = något många läsare skulle vilja veta direkt: större händelser och kriser i Sverige, regeringsbesked, stora olyckor; matchresultat i Champions League/de stora ligorna med svenska eller topplag, stora transfers och tränarbyten; stora marknadsrörelser, räntebesked, stora bolagsnyheter. Rutinnyheter och småsaker väntar till nästa fulla upplaga.
+3. **Hittas inget stort: publicera ingenting.** Skriv bara en kort rapport `logs/runs/ÅÅÅÅ-MM-DD-HHMM-snabbkoll.md` ("Inget stort att publicera") och pusha den.
+4. Hittas något: skriv **högst 3** artiklar enligt samma regler och format som vanligt (egna ord, källor, inga påhitt). En stor nyhet som redan finns uppdateras i sin befintliga fil i stället för att dubbleras.
+5. Låt en fristående granskare (separat agent som inte skrivit texten) kontrollera varje artikel mot källorna innan publicering. Publicera bara det som godkänts.
+6. Sätt `featured: true` bara om nyheten är större än nuvarande toppnyhet. Skriv `content/edition.json` med label "Uppdatering" och publiceringstiden, kör `git pull --rebase`, `python3 build.py`, committa ("Snabbkoll ÅÅÅÅ-MM-DD HH.MM") och pusha på publiceringsminuten. Uppdatera `logs/published.txt` och rapporten.
+
+En nyhet som utvecklas uppdateras i sin befintliga fil (ny text + `updated:`-fält i frontmatter, t.ex. `updated: 2026-11-26T13:00:00`) i stället för att en dubblett skapas.
 
 ## Laget – hierarki
 
@@ -59,7 +72,7 @@ Koordinator (chefredaktör)
 
 **Fotboll-agent** – all europeisk fotboll
 - Premier League, La Liga, Serie A, Bundesliga, Ligue 1, Allsvenskan, Champions League/Europa League/Conference League, landslag och transfers.
-- Kvällsupplagan prioriterar kvällens matcher och resultat.
+- Kvällsupplagan (18.00) prioriterar kvällens matcher; snabbkollen 21.00 tar resultat och halvtidslägen i de största matcherna.
 - Källor: BBC Sport, UEFA, ligornas och klubbarnas officiella sidor, Reuters, AP, Fotbollskanalen, Sportbladet, Expressen Sport. Transferrykten bara från etablerade källor och tydligt märkta som rykten.
 
 **Ekonomi-agent** – global ekonomi, börs, krypto och valuta
@@ -77,8 +90,8 @@ Varje kategoriagent levererar färdiga artikelfiler (se Filformat) plus en lista
 
 **Instagram-agent** – publicerar upplagan på Instagram (@nordicbrief.se) via Buffer
 - Körs efter att sajten publicerats och endast med controllergodkänt innehåll.
-- **Instagram ska bara innehålla de allra viktigaste nyheterna.** Välj efter nyhetsvärde (påverkan på många människor, stora händelser, stora matcher/transfers, stora marknadsrörelser) – inte för att fylla en kvot per sektion. Morgon: de 3 viktigaste (toppnyheten först). Lunch/eftermiddag/kväll: 1–3 viktigaste nya; finns inget riktigt viktigt nytt, publicera bara Marknadsläget-kortet eller hoppa över inlägget och notera det.
-- Skapar kort: `python3 social/make_cards.py --edition morgon|lunch|eftermiddag|kvall --posts <filer> [--markets]` (Marknadsläget-kortet tas med i morgon-, lunch- och eftermiddagsupplagan). Kör sedan `python3 build.py`, committa och pusha, vänta tills första bild-URL:en i `urls.txt` svarar (GitHub Pages behöver ca 1–2 min).
+- **Instagram ska bara innehålla de allra viktigaste nyheterna.** Välj efter nyhetsvärde (påverkan på många människor, stora händelser, stora matcher/transfers, stora marknadsrörelser) – inte för att fylla en kvot per sektion. Instagram körs bara vid de fulla upplagorna (morgon, lunch, kväll) – aldrig vid snabbkoller. Morgon: de 3 viktigaste (toppnyheten först). Lunch/kväll: 1–3 viktigaste nya; finns inget riktigt viktigt nytt, publicera bara Marknadsläget-kortet eller hoppa över inlägget och notera det.
+- Skapar kort: `python3 social/make_cards.py --edition morgon|lunch|kvall --posts <filer> [--markets]` (Marknadsläget-kortet tas med i morgon- och lunchupplagan). Kör sedan `python3 build.py`, committa och pusha, vänta tills första bild-URL:en i `urls.txt` svarar (GitHub Pages behöver ca 1–2 min).
 - Publicerar som karusell med Buffer `create_post`: organisation `6b06d7904246b557f5b02897`, kanal `6b06d7e58541f09ecb9c6fc9`, `schedulingType: automatic`, `mode: shareNow`, `metadata.instagram: {type: post, shouldShareToFeed: true}`, bilderna från `urls.txt` i ordning (alt-text = kortets rubrik), bildtext från `caption.txt`.
 - Om Buffer inte svarar eller publiceringen misslyckas: försök en gång till, annars hoppa över och notera i körningsrapporten. Sajten påverkas aldrig av Instagram-fel.
 - **Alla inlägg ska ha hashtaggar** för att nå fler tittare och följare: skriptet lägger till ~20 relevanta (bas + sektionernas taggar). Lägg gärna till 1–5 nyhetsspecifika taggar (t.ex. klubb-, lag- eller bolagsnamn: #malmöff #arsenal #volvo) så länge de är relevanta – max 30 totalt, aldrig irrelevanta trendtaggar.
@@ -125,7 +138,7 @@ Fil: `content/posts/ÅÅÅÅ-MM-DD-sektion-kort-slug.md`
 title: "Rubrik"
 summary: "Ingress, 1–2 meningar."
 section: sverige   # sverige | fotboll | ekonomi
-date: 2026-11-26T07:00:00
+date: 2026-11-26T08:00:00
 # chart: (valfritt, se "Diagram och bilder")
 featured: false
 sources:
