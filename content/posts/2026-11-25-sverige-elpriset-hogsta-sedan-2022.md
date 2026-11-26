@@ -3,7 +3,7 @@ title: "Elpriset på torsdag det högsta sedan krisvintern 2022"
 summary: "Det nordiska systempriset landar på 3,19 kronor per kilowattimme på torsdag – årets högsta och den högsta nivån sedan december 2022."
 section: sverige
 date: 2026-11-25T21:00:00
-featured: true
+featured: false
 sources:
   - name: "Ny Teknik (TT)"
     url: "https://www.nyteknik.se/energi/elprissmockan-slar-mot-hela-landet-hoegsta-nivan-sedan-krisaret-2022/4516866"
