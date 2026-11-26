@@ -3,7 +3,7 @@ title: "41 centerpartister: Dags att pröva Kristerssons paket"
 summary: "Ett upprop från 41 centerpartister, bland dem flera kommunstyrelseordförande, vill att partiet prövar Ulf Kristersson som statsminister. Beskedet från C-ledningen inför måndagens omröstning dröjer."
 section: sverige
 date: 2026-11-26T07:00:00
-featured: true
+featured: false
 sources:
   - name: "Göteborgs-Posten (TT)"
     url: "https://www.gp.se/nyheter/sverige/41-centerpartister-prova-kristerssons-paket.6a7980a3-0503-55c1-87d6-db037cd02f2f"
