@@ -5,7 +5,7 @@ slug: c-s-ledning-sager-ja-till-kristersson-som-statsminister
 section: sverige
 date: 2026-11-26T12:00:00
 updated: 2026-11-26T21:00:00
-featured: true
+featured: false
 sources:
   - name: "SVT Nyheter"
     url: "https://www.svt.se/nyheter/inrikes/c-ledningen-sager-ja-till-ulf-kristersson"
