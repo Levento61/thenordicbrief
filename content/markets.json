@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-27T04:22:14+00:00",
- "as_of": "27 nov 05.22",
+ "updated": "2026-11-27T14:05:28+00:00",
+ "as_of": "27 nov 15.05",
  "source": "TradingView, Yahoo Finance, Riksbanken",
  "groups": [
   {
@@ -9,11 +9,11 @@
     {
      "key": "omxs30",
      "name": "OMXS30",
-     "value": "3 251,38",
-     "raw": 3251.3816,
-     "change_pct": 1.98,
+     "value": "3 286,97",
+     "raw": 3286.9667,
+     "change_pct": 1.09,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     },
     {
@@ -23,7 +23,7 @@
      "raw": 7182.78,
      "change_pct": -0.25,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     },
     {
@@ -33,7 +33,7 @@
      "raw": 23585.8023,
      "change_pct": -0.62,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     },
     {
@@ -43,7 +43,7 @@
      "raw": 23496.08,
      "change_pct": 0.61,
      "source": "Yahoo Finance",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     }
    ]
@@ -54,31 +54,31 @@
     {
      "key": "btc",
      "name": "Bitcoin",
-     "value": "61 397 USD",
-     "raw": 61396.99,
-     "change_pct": 1.49,
+     "value": "61 413 USD",
+     "raw": 61413.02,
+     "change_pct": 1.52,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     },
     {
      "key": "eth",
      "name": "Ethereum",
-     "value": "1 729 USD",
-     "raw": 1728.96,
-     "change_pct": 2.47,
+     "value": "1 723 USD",
+     "raw": 1723.31,
+     "change_pct": 2.13,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     },
     {
      "key": "sol",
      "name": "Solana",
-     "value": "72,63 USD",
-     "raw": 72.63,
-     "change_pct": 2.38,
+     "value": "73,28 USD",
+     "raw": 73.28,
+     "change_pct": 3.3,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     }
    ]
@@ -89,31 +89,31 @@
     {
      "key": "eursek",
      "name": "EUR/SEK",
-     "value": "11,19",
-     "raw": 11.1878,
-     "change_pct": -0.07,
+     "value": "11,21",
+     "raw": 11.20526,
+     "change_pct": 0.08,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     },
     {
      "key": "usdsek",
      "name": "USD/SEK",
-     "value": "10,19",
-     "raw": 10.19373,
-     "change_pct": -0.12,
+     "value": "10,23",
+     "raw": 10.23163,
+     "change_pct": 0.25,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     },
     {
      "key": "jpysek",
      "name": "JPY/SEK",
-     "value": "0,0636",
-     "raw": 0.06364,
-     "change_pct": -0.09,
+     "value": "0,0638",
+     "raw": 0.06376,
+     "change_pct": 0.09,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     }
    ]
@@ -128,37 +128,37 @@
      "raw": 2.0,
      "change_pct": null,
      "source": "Riksbanken",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     },
     {
      "key": "gold",
      "name": "Guld",
-     "value": "3 634,19 USD",
-     "raw": 3634.191,
-     "change_pct": 1.25,
+     "value": "3 642,40 USD",
+     "raw": 3642.4,
+     "change_pct": 1.47,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     },
     {
      "key": "brent",
      "name": "Brent",
-     "value": "92,26 USD",
-     "raw": 92.26,
-     "change_pct": 0.64,
+     "value": "91,50 USD",
+     "raw": 91.5,
+     "change_pct": -0.19,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     },
     {
      "key": "natgas",
      "name": "Naturgas",
-     "value": "3,601 USD",
-     "raw": 3.601,
-     "change_pct": -1.56,
+     "value": "3,478 USD",
+     "raw": 3.478,
+     "change_pct": -4.92,
      "source": "TradingView",
-     "as_of": "2026-11-27T04:22:14+00:00",
+     "as_of": "2026-11-27T14:05:28+00:00",
      "stale": false
     }
    ]
