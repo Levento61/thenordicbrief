@@ -1,27 +1,30 @@
 ---
-title: "Uppgifter: M, KD och L lägger gemensam budget i dag – anpassad efter C"
-summary: "Övergångsregeringens partier väntas enligt TV4 lämna en gemensam budgetmotion på fredagen, utformad för att även Centerpartiet ska kunna ställa sig bakom. C:s förtroenderåd avgör på söndag och riksdagen röstar om Ulf Kristersson på måndag."
+title: "M, KD och L lägger fram budget: Sänkt bränsleskatt och ny elbilspremie"
+summary: "Övergångsregeringens tre partier har lämnat en gemensam budgetmotion för 2027 med lägre bränsleskatt, en ny elbilspremie och fler poliser. Centerpartiet har ännu inte tagit ställning. C:s förtroenderåd avgör på söndag och riksdagen röstar om Ulf Kristersson på måndag."
 section: sverige
 date: 2026-11-27T08:00:00
+updated: 2026-11-27T18:00:00
 featured: true
 sources:
-  - name: "TV4 Nyheterna"
-    url: "https://www.tv4.se/artikel/3D3sx7yIvoSN0iZJjlMMQQ/gemensam-borglig-budget-laeggs-fram-i-morgon"
   - name: "SVT Nyheter"
-    url: "https://www.svt.se/nyheter/inrikes/efter-cs-odesmote-det-har-hander-nu"
-  - name: "SVT Nyheter"
-    url: "https://www.svt.se/nyheter/inrikes/c-toppen-ska-rosta-nej-till-kristersson-oerhort-upprord"
-  - name: "SVT Nyheter (direktrapportering)"
-    url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026?inlagg=373e3e31a9c494b8414630820ce8830b"
+    url: "https://www.svt.se/nyheter/inrikes/m-l-och-kd-presenterar-gemensam-budget"
+  - name: "Hallandsposten (TT)"
+    url: "https://www.hallandsposten.se/nyheter/sverige/m-kd-och-l-vill-ha-sankt-bransleskatt.36b085ce-ef2b-5664-989f-3214a839167b"
+  - name: "Göteborgs-Posten (TT)"
+    url: "https://www.gp.se/nyheter/sverige/kristersson-siktar-pa-ny-regering-om-en-vecka.d042a470-6152-5eef-a1fc-8ed86321989c"
 ---
-Moderaterna, Kristdemokraterna och Liberalerna planerar att lämna in en gemensam budgetmotion i dag, fredag, uppger TV4 Nyheterna. Förslaget ska enligt kanalens uppgifter vara format så att även Centerpartiet kan stödja det, trots att C inte deltagit i förhandlingarna. Fredagen är sista dagen för budgetmotioner enligt riksdagens regler.
+Moderaterna, Kristdemokraterna och Liberalerna har på fredagen lagt fram en gemensam budgetmotion för 2027. Partiernas ekonomisk-politiska talespersoner presenterade förslagen i en debattartikel i Expressen, rapporterar SVT och TT. Fredagen var sista dagen för att lämna in budgetmotioner till riksdagen.
 
-Bakgrunden är att övergångsregeringen bara får lägga en opolitisk budgetproposition. En ny regering riskerar därför att tappa tid innan den kan styra budgetprocessen, skriver TV4.
+Bland förslagen finns:
 
-Samtidigt pågår enligt TV4 samtal om ministerposter inför en möjlig regeringsförklaring nästa fredag. En svår fråga uppges vara vilka partier som ska avstå poster för att ge plats åt C.
+- **Lägre bränsleskatt** – skatten på bensin och diesel sänks till EU:s miniminivå under första halvåret 2027.
+- **Ny elbilspremie** – den som köper eller leasar en ny bil som kostar upp till 550 000 kronor ska få 1 000 kronor i månaden i tre år, enligt TT.
+- **Elskatten** – indexeringen av elskatten avskaffas permanent.
+- **Fler poliser** – mer pengar till polisen.
+- **Forskningsavdrag** – ett så kallat superavdrag för företag som investerar i forskning och utveckling i Sverige.
 
-Själva regeringsfrågan avgörs först i helgen. C:s förtroenderåd samlas på söndag för att ta ställning till ledningens förslag att släppa fram Kristersson. På måndag klockan 13 håller riksdagen sin tredje statsministeromröstning, gällande en regering av M, KD, L och C, enligt SVT. Kristersson behöver att Sverigedemokraterna inte röstar emot. SD har sagt att partiet kan tolerera en sådan fyrpartiregering utan att ingå i den.
+Motionen är skild från den budgetproposition som finansminister Elisabeth Svantesson (M) redan lämnat för övergångsregeringen. Den innehåller ingen ny politik, och ändringar kan därför bara drivas genom motioner. Partierna skriver att en ny regering, om den får tillträda efter måndagens omröstning, har goda möjligheter att justera budgeten i efterhand. Talespersonerna betonar också att de kommande fyra åren kräver ödmjukhet och samarbetsvilja.
 
-Även om förtroenderådet säger ja är det inte säkert att hela C:s riksdagsgrupp följer linjen. Riksdagsledamoten Anna Lasses säger till SVT att hon röstar nej oavsett vad förtroenderådet beslutar, eftersom C enligt henne skulle bli beroende av SD i varje beslut. Hon tror att fler i gruppen gör likadant, men vet inte hur många. Faller omröstningen hålls en fjärde före jul, och misslyckas även den blir det extraval.
+Centerpartiet står inte bakom motionen. Parallellt har M, KD, L och C offentliggjort ett gemensamt avtal om inriktningen för en möjlig fyrpartiregering, men avtalet har ännu inte godkänts inom C.
 
-Från oppositionen kom skarp kritik under torsdagskvällen. Socialdemokraternas Lena Hallengren kallade C:s väg ett stort svek, medan Vänsterpartiets Ida Gabrielsson uppmanade förtroenderådet att säga nej till en regering som är beroende av SD.
+C:s förtroenderåd tar ställning på söndag och riksdagen håller statsministeromröstningen på måndag. Enligt en källa till TT kan en ny regering av M, KD, L och C presenteras fredagen därpå, men planen är inte låst. Från oppositionen säger S-ledaren Magdalena Andersson att dörren fortfarande står öppen för C, medan V-ledaren Nooshi Dadgostar vill se fortsatta förhandlingar om C säger nej till Kristersson, enligt SVT.
