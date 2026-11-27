@@ -1,19 +1,28 @@
 ---
-title: "Wall Street öppnade uppåt – men lyftet blev mindre än terminerna lovade"
-summary: "De stora New York-indexen steg knappt en procent i början av fredagens förkortade handel. Börsen stänger redan klockan 19 svensk tid."
+title: "Wall Streets bästa vecka sedan april 2025 – S&P 500 upp 5,6 procent"
+summary: "De ledande New York-indexen steg kraftigt i fredagens förkortade handel. Teknik- och AI-aktier drev på fredagens uppgång efter en svängig vecka."
 section: ekonomi
 date: 2026-11-27T18:00:00
+updated: 2026-11-27T21:00:00
 featured: false
 sources:
+  - name: "AP (via KLIF)"
+    url: "https://www.klif.com/2026/11/27/stocks-jump-to-close-out-an-erratic-week-that-was-also-wall-streets-best-in-more-than-a-year/"
   - name: "JBizNews"
-    url: "https://jbiznews.com/stocks-open-sharply-higher-on-black-friday-dow-jones-industrial-average-up-0-76-sp-500-up-0-77-nasdaq-composite-up-0-73/"
-  - name: "24/7 Wall St."
-    url: "https://247wallst.com/investing/2026/11/27/stock-market-today-markets-off-to-a-strong-black-friday-start/"
+    url: "https://jbiznews.com/u-s-stocks-close-sharply-higher-in-shortened-black-friday-session-and-post-big-weekly-gains-dow-jones-industrial-average-up-1-18-sp-500-up-1-60-nasdaq-composite-up-2-31/"
+  - name: "TipRanks"
+    url: "https://www.tipranks.com/news/u-s-market-closes-sharply-higher-to-end-volatile-week-on-wall-street"
 ---
-Handeln i New York kom i gång med plustecken efter Thanksgiving-uppehållet, men uppgången i öppningen blev betydligt mer dämpad än vad terminshandeln pekat mot under förmiddagen.
+Wall Street avslutade veckan med en rejäl uppgång. S&P 500 steg 1,6 procent i fredagens halvdagshandel och är därmed upp 5,6 procent för veckan, indexets största veckolyft sedan april 2025, rapporterar nyhetsbyrån AP.
 
-Vid 15.44 svensk tid, en kvart efter öppningen, låg S&P 500 på 7 238 punkter, en uppgång med 0,8 procent jämfört med onsdagens stängning. Dow Jones steg lika mycket till 50 564 punkter och Nasdaq Composite 0,7 procent till 23 758. Halvledarindexet steg knappt 0,9 procent. Som jämförelse låg Nasdaq 100-terminen 2,4 procent högre vid 14-tiden svensk tid, enligt 24/7 Wall St.
+Så här stängde de tre stora indexen, enligt JBizNews:
 
-Köparna har framför allt sökt sig till de teknikaktier som pressats under november. Nvidia steg nästan 3 procent i handeln före öppningen, enligt 24/7 Wall St.
+- **S&P 500:** 7 297 punkter, upp 1,6 procent.
+- **Dow Jones:** 50 775 punkter, upp 592 punkter eller 1,2 procent.
+- **Nasdaq Composite:** 24 130 punkter, upp 2,3 procent.
 
-Fredagens session är kort: aktiehandeln stänger klockan 13 lokal tid, alltså 19 svensk tid, och omsättningen brukar vara låg dagen efter Thanksgiving.
+Räknat över veckan steg Dow Jones omkring 5,5 procent och Nasdaq närmare 6,7 procent, enligt JBizNews.
+
+Fredagens rally drevs av AI-bolag, enligt TipRanks. Investerare köpte teknik- och chipaktier som fallit tidigare under månaden, enligt JBizNews. Veckan var skakig, enligt AP: börsen rusade i måndags och svängde sedan kraftigt under tisdagen och onsdagen, innan den höll stängt på torsdagen för Thanksgiving.
+
+Oron kring AI-handeln är fortfarande stor, enligt analytiker som citeras av CNBC och Barron's och återges av TipRanks. De bedömer också att en möjlig räntehöjning från den amerikanska centralbanken Federal Reserve i december sannolikt tynger börsen de kommande veckorna.
