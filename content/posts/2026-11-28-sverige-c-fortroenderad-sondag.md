@@ -1,28 +1,30 @@
 ---
-title: "155 centerpartister uppmanar förtroenderådet att säga nej till Kristersson"
-summary: "Inför söndagens avgörande i Centerpartiet växer det interna upproret: 155 medlemmar kräver i ett upprop att förtroenderådet underkänner ledningens linje. Samtidigt vittnar migrationspolitiske talespersonen om grova påhopp från partikamrater."
+title: "C-distrikten splittrade inför söndagens avgörande – ledningen räknar med seger"
+summary: "Skåne säger ja till Kristersson, Stockholms stad och Västra Götaland nej. Kritikerna väntar sig en jämn omröstning i Centerpartiets förtroenderåd, men partiledningen räknar enligt TV4 med att vinna."
 section: sverige
 date: 2026-11-28T08:00:00
-updated: 2026-11-28T13:00:00
+updated: 2026-11-28T18:00:00
 featured: true
 sources:
-  - name: "Göteborgs-Posten (TT)"
-    url: "https://www.gp.se/nyheter/sverige/155-centerpartister-rosta-nej-till-kristersson.70751210-75dc-5a23-bced-eb568147b013"
-  - name: "Göteborgs-Posten (TT)"
-    url: "https://www.gp.se/nyheter/sverige/c-topp-kallas-forradare-och-fascistkramare.9b32a4a8-9d07-5b0c-85f4-8149f27c65f5"
-  - name: "Göteborgs-Posten (TT)"
-    url: "https://www.gp.se/nyheter/sverige/statsvetare-da-bor-c-politiker-lamna-sina-uppdrag.45efc556-cf8c-5b4d-9b91-699817d54059"
-  - name: "SVT Nyheter (liveblogg: Valet 2026)"
-    url: "https://www.svt.se/nyheter/inrikes/senaste-nytt-om-val-2026?inlagg=a81223bb3b7211a2fc5a8ce3699c9c3d"
+  - name: "SVT Nyheter"
+    url: "https://www.svt.se/nyheter/inrikes/nu-visar-c-distrikt-korten-vittnar-om-splittrat-parti"
+  - name: "TV4 Nyheterna"
+    url: "https://tv4.se/artikel/31S3oZ3Lib3aQTBVfC6CRs/tv4-erfar-c-ledningen-raeknar-med-vinst-i-foertroenderadet"
+  - name: "Dagens PS"
+    url: "https://www.dagensps.se/varlden/politik/thand-ringqvist-eller-andersson-nagon-kommer-avga-efter-cs-besked/"
+  - name: "Bohusläningen (TT)"
+    url: "https://www.bohuslaningen.se/nyheter/sverige/akesson-sd-spannande-tider.f1c4ed01-8d03-5223-931b-447695d31ab2"
+  - name: "Sweden Herald (TT)"
+    url: "https://swedenherald.com/article/kristersson-could-present-new-swedish-government-as-early-as-next-friday-if-centre-party-backs-him"
+  - name: "Sweden Herald (TT)"
+    url: "https://swedenherald.com/article/155-center-party-members-vote-no-to-kristersson"
 ---
-Dagen före Centerpartiets förtroenderåd har motståndet mot partiledningens linje i regeringsfrågan fått ett samlat uttryck. I ett upprop på Expressens debattsida, som TT rapporterar om, uppmanar 155 centerpartister rådet att på söndag rösta nej till att släppa fram Ulf Kristersson (M) som statsminister. Bland undertecknarna finns Martin Ådahl, Birgitta Ohlsson och Kerstin Lundgren.
+Dagen före Centerpartiets förtroenderåd har flera distrikt gått ut med hur de tänker rösta, och bilden är splittrad, rapporterar SVT. Skåne, partiets största distrikt, ställer sig bakom partistyrelsens linje att släppa fram Ulf Kristersson (M) som statsminister. Distriktsordföranden Anders Edwall skriver till SVT att distriktets 33 kretsar var tydliga, även om beskedet inte var enhälligt. Stockholms stad och Västra Götaland tänker i stället rösta nej. Ungdomsförbundet CUF har sagt ja.
 
-Undertecknarna anser att ramavtalet med M, KD och L bryter mot partiets mest grundläggande linje och innehåller för lite centerpolitik. De pekar särskilt på migrationen, decentralisering och valfrihet samt biståndet som områden där en ny borgerlig regering skulle gå en annan väg än C, och de tvivlar på att avtalet ger fler jobb eller lägre utsläpp.
+I Jämtland är distriktsordföranden Effie Kourlos kritisk: hon menar att en Kristerssonregering skulle bli helt beroende av SD och vill att partiet väljer konstruktiv opposition. Hur distriktet röstar är ännu inte klart. I ett upprop har dessutom 155 centerpartister uppmanat rådet att säga nej.
 
-Stämningen i partiet är hård. Niels Paarup-Petersen, C:s migrationspolitiske talesperson och riksdagsledamot, skriver på Facebook att partikamrater kallat honom förrädare och "fascistkramare". Han ber om en lugnare ton och försvarar samtidigt sitt stöd för ledningen: alternativet till ett ja på måndag är enligt honom ett extraval, som sannolikt skulle leda till en regering under SD:s ledning.
+Förtroenderådet är partiets högsta beslutande organ och har 59 ombud. Enligt Expressen, som Dagens PS återger, krävs 30 röster för majoritet och ett femtontal ombud uppges vara osäkra. Kritikerna väntar sig en jämn omröstning, men partiledningen räknar med att vinna, erfar TV4. Ledningen har ställt två vägar mot varandra – ja till Kristersson eller extraval. Att låta honom passera och själva gå i opposition, som vissa distrikt velat, ser ledningen inte som ett alternativ.
 
-Flera riksdagsledamöter har redan sagt att de tänker rösta nej i statsministeromröstningen oavsett vad förtroenderådet beslutar, bland dem Birgitta Ohlsson och Anna Lasses, och förre partiledaren Muharrem Demirok utesluter inte att han gör detsamma. Statsvetaren Andreas Johansson Heinö, Timbro, säger till TT att det i så fall vore exceptionellt och att ledamöter som inte kan acceptera ett majoritetsbeslut borde fundera på att lämna sina uppdrag. Han bedömer ändå att ledningens förslag sannolikt går igenom på söndag.
+Enligt SVT:s källor kan partiledaren Elisabeth Thand Ringqvist avgå om rådet säger nej. När hon i TV4:s Nyhetsmorgon fick frågan om hon kan sitta kvar vid ett nej svarade hon att det beror på hur omröstningen utfaller.
 
-Förtroenderådet har 59 ombud. Enligt uppgifter till SVT är partiledaren Elisabeth Thand Ringqvist beredd att avgå om rådet säger nej. Riksdagen röstar om Kristersson på måndag klockan 13.00 – den tredje statsministeromröstningen. Faller även den återstår en sista omröstning före jul, därefter blir det extraval.
-
-På oppositionssidan upprepade V-ledaren Nooshi Dadgostar på lördagen, på väg till Socialistiskt forum i Stockholm, att V gärna förhandlar med Centerpartiet, enligt Aftonbladet som TT återger. På frågan om förhandlingarna skulle gälla V:s krav på ministerposter svarade hon bara att samarbetsformer alltid diskuteras.
+Riksdagen röstar om Kristersson på måndag klockan 13.00. SD-ledaren Jimmie Åkesson sade på lördagen att partiet avstår om talmannen föreslår en borgerlig fyrpartiregering. Säger C ja kan förhandlingarna om ministerposter enligt TT börja direkt, och en ny regering kan enligt en källa presenteras redan nästa vecka.
