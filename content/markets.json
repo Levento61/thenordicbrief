@@ -1,6 +1,6 @@
 {
- "updated": "2026-11-28T04:13:59+00:00",
- "as_of": "28 nov 05.13",
+ "updated": "2026-11-28T12:59:37+00:00",
+ "as_of": "28 nov 13.59",
  "source": "TradingView, Yahoo Finance, Riksbanken",
  "groups": [
   {
@@ -13,7 +13,7 @@
      "raw": 3297.6878,
      "change_pct": 1.42,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     },
     {
@@ -23,7 +23,7 @@
      "raw": 7297.49,
      "change_pct": 1.6,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     },
     {
@@ -33,17 +33,17 @@
      "raw": 24129.5005,
      "change_pct": 2.31,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     },
     {
      "key": "nyse",
      "name": "NYSE",
-     "value": "23 791,30",
-     "raw": 23791.3,
+     "value": "23 791,35",
+     "raw": 23791.346,
      "change_pct": 1.26,
      "source": "Yahoo Finance",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     }
    ]
@@ -54,31 +54,31 @@
     {
      "key": "btc",
      "name": "Bitcoin",
-     "value": "59 973 USD",
-     "raw": 59972.66,
-     "change_pct": 0.17,
+     "value": "59 186 USD",
+     "raw": 59186.2,
+     "change_pct": -1.15,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     },
     {
      "key": "eth",
      "name": "Ethereum",
-     "value": "1 664 USD",
-     "raw": 1664.27,
-     "change_pct": 0.21,
+     "value": "1 646 USD",
+     "raw": 1646.0,
+     "change_pct": -0.89,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     },
     {
      "key": "sol",
      "name": "Solana",
-     "value": "71,60 USD",
-     "raw": 71.6,
-     "change_pct": -0.01,
+     "value": "70,86 USD",
+     "raw": 70.86,
+     "change_pct": -1.05,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     }
    ]
@@ -93,7 +93,7 @@
      "raw": 11.22029,
      "change_pct": 0.22,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     },
     {
@@ -103,7 +103,7 @@
      "raw": 10.2607,
      "change_pct": 0.53,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     },
     {
@@ -113,7 +113,7 @@
      "raw": 0.06392,
      "change_pct": 0.35,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     }
    ]
@@ -128,7 +128,7 @@
      "raw": 2.0,
      "change_pct": null,
      "source": "Riksbanken",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     },
     {
@@ -138,7 +138,7 @@
      "raw": 3653.6,
      "change_pct": 1.79,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     },
     {
@@ -148,7 +148,7 @@
      "raw": 90.84,
      "change_pct": -0.91,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     },
     {
@@ -158,7 +158,7 @@
      "raw": 3.491,
      "change_pct": -4.57,
      "source": "TradingView",
-     "as_of": "2026-11-28T04:13:59+00:00",
+     "as_of": "2026-11-28T12:59:37+00:00",
      "stale": false
     }
    ]
