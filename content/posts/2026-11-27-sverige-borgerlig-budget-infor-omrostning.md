@@ -4,7 +4,7 @@ summary: "Övergångsregeringens tre partier har lämnat en gemensam budgetmotio
 section: sverige
 date: 2026-11-27T08:00:00
 updated: 2026-11-27T18:00:00
-featured: true
+featured: false
 sources:
   - name: "SVT Nyheter"
     url: "https://www.svt.se/nyheter/inrikes/m-l-och-kd-presenterar-gemensam-budget"
