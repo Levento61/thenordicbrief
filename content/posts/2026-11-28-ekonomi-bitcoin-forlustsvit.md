@@ -1,8 +1,9 @@
 ---
-title: "Bitcoin nära att bryta sju veckors förlustsvit – men kring 60 000 dollar"
-summary: "Bitcoin låg på fredagen strax på plus för veckan, vilket i så fall bryter en svit på sju raka veckoförluster. November är ändå på väg att bli en av årets sämsta månader."
+title: "Bitcoin tillbaka under 60 000 dollar – förlustsviten kan bli åtta veckor"
+summary: "Efter ett fall på fredagseftermiddagen låg bitcoin på lördagen kring 59 500 dollar, och risken för en åttonde raka veckoförlust har ökat. Utflödet ur de amerikanska bitcoinfonderna i november har stigit till 5,78 miljarder dollar."
 section: ekonomi
 date: 2026-11-28T08:00:00
+updated: 2026-11-28T13:00:00
 featured: false
 chart:
   title: "Bitcoin, dagliga stängningar 1–26 nov 2026 (USD, UTC)"
@@ -11,15 +12,19 @@ chart:
   unit: "USD"
   source: "Yahoo Finance (BTC-USD)"
 sources:
+  - name: "CryptoTicker"
+    url: "https://cryptoticker.io/en/bitcoin-price-59600-eighth-day-etf-outflows-wall-street/"
+  - name: "crypto.news"
+    url: "https://crypto.news/bitcoin-etf-outflows-november-5-78-billion/"
   - name: "CoinDesk"
     url: "https://www.coindesk.com/markets/2026/11/27/bitcoin-on-course-to-end-seven-week-losing-streak-while-trailing-stock-rebound"
-  - name: "CoinDesk (liveuppdateringar 27 nov)"
-    url: "https://www.coindesk.com/tech/2026/11/27/live-news-bitcoin-rebounds-above-usd61-000-as-ai-stocks-lead-premarket-gains"
 ---
-Bitcoin har en chans att bryta en lång nedgång. På fredagsmorgonen den 27 november låg kryptovalutan omkring 0,6 procent upp för veckan, enligt CoinDesk. Håller det till veckostängningen på söndag bryts en svit på sju raka veckor med fall – den näst längsta förlustsviten som noterats.
+Chansen att bryta bitcoins långa nedgång har krympt. På fredagsmorgonen låg kryptovalutan svagt på plus för veckan, enligt CoinDesk, men när Wall Street öppnade vände det nedåt. Från drygt 61 300 dollar klockan 14.30 UTC föll priset till omkring 59 000 dollar på 35 minuter – ett tapp på närmare 4 procent, enligt CryptoTicker.
 
-Marginalen är dock tunn. Bitcoin steg till över 61 000 dollar på fredagsmorgonen när de amerikanska aktieterminerna lyfte efter Thanksgiving, men när börserna i New York öppnade föll priset tillfälligt under 60 000 dollar. Under förmiddagen amerikansk tid hade bitcoin svårt att hålla den nivån, trots att teknikbörsen Nasdaq steg.
+På lördagsmorgonen, vid 08.40 UTC, handlades bitcoin kring 59 565 dollar, ned 3,4 procent på ett dygn enligt CoinGecko. Dygnets lägsta notering var 58 910 dollar. Därmed är den lilla veckouppgång som CoinDesk noterade på fredagsmorgonen borta, och utan en återhämtning före söndagens veckostängning hotar en åttonde raka vecka med fall.
 
-Över månaden är bilden fortsatt svag. Bitcoin har fallit omkring 20 procent i november, enligt CoinDesk. Månaden inleddes med en stängning på drygt 78 000 dollar, enligt Yahoo Finance.
+Fallet utlöste tvångsstängningar av belånade positioner för omkring 407 miljoner dollar under ett dygn, varav 314 miljoner dollar var positioner som satsat på stigande priser.
 
-Ether har utvecklats på liknande sätt, och bland de mest handlade optionerna på ether dominerar kontrakt som skyddar mot ytterligare fall.
+Ether låg kring 1 652 dollar, ned 4,4 procent, och solana kring 71 dollar.
+
+Pengarna fortsätter också att lämna de amerikanska börshandlade bitcoinfonderna. På fredagen blev nettoutflödet 389 miljoner dollar – den åttonde handelsdagen i rad med utflöden – varav 327 miljoner dollar ur Blackrocks IBIT. Hittills i november uppgår utflödet till 5,78 miljarder dollar, långt över det tidigare månadsrekordet på 4,51 miljarder dollar från juni, enligt crypto.news som hänvisar till Farside Investors.
